@@ -18,7 +18,7 @@ tags:
 - postgre
 - database
 categories:
-- compouter
+- computer
 
 hiddenFromHomePage: false
 hiddenFromSearch: false

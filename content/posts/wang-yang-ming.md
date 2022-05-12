@@ -39,12 +39,11 @@ seo:
 # See details front matter: /theme-documentation-content/#front-matter
 ---
 
-<!--more-->
-
 ![王阳明](/images/王阳明.jfif)
 
-
 ### 心就是*"一念"*,善恶都在这一念
+
+<!--more-->
 
 王阳明:
 ```
