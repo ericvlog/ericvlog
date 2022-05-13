@@ -9,7 +9,7 @@ authorEmail: "plsharevme@gmail.com"
 description: ""
 keywords: "wang-yang-ming,王阳明"
 license: ""
-comment: false
+comment: true
 weight: 0
 
 tags:

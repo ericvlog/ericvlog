@@ -9,7 +9,7 @@ authorEmail: "plsharevme@gmail.com"
 description: ""
 keywords: "Tubesync,youtube,playlists"
 license: ""
-comment: false
+comment: true
 weight: 0
 
 tags:

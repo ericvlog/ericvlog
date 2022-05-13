@@ -9,7 +9,7 @@ authorEmail: "plsharevme@gmail.com"
 description: "hello,it me eric"
 keywords: "linux,samba,raid"
 license: ""
-comment: false
+comment: true
 weight: 0
 
 tags:
