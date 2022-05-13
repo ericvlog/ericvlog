@@ -245,6 +245,263 @@ theme = "FixIt"
   Email = "plsharevme@gmail.com"
   RSS = true # FixIt NEW | 0.2.0
 
+# FixIt CHANGED | 0.2.0 Page config
+[params.page]
+  # FixIt NEW | 0.2.0 whether to hide a page from home page
+  hiddenFromHomePage = false
+  # FixIt NEW | 0.2.0 whether to hide a page from search results
+  hiddenFromSearch = false
+  # FixIt NEW | 0.2.0 whether to enable twemoji
+  twemoji = false
+  # whether to enable lightgallery
+  lightgallery = false
+  # FixIt NEW | 0.2.0 whether to enable the ruby extended syntax
+  ruby = true
+  # FixIt NEW | 0.2.0 whether to enable the fraction extended syntax
+  fraction = true
+  # FixIt NEW | 0.2.0 whether to enable the fontawesome extended syntax
+  fontawesome = true
+  # license info (HTML format is supported)
+  license = '<a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a>'
+  # whether to show link to Raw Markdown content of the content
+  linkToMarkdown = true
+  # FixIt NEW | 0.2.4 whether to show the full text content in RSS
+  rssFullText = false
+  # FixIt NEW | 0.2.13 Page style ("narrow", "normal", "wide", ...)
+  pageStyle = "normal"
+  # FixIt NEW | 0.2.14 Gravatar is force-used as the author's avatar
+  gravatarForce = false
+  # FixIt NEW | 0.2.0 Table of the contents config
+  [params.page.toc]
+    # whether to enable the table of the contents
+    enable = true
+    # FixIt NEW | 0.2.9 whether to keep the static table of the contents in front of the post
+    keepStatic = false
+    # whether to make the table of the contents in the sidebar automatically collapsed
+    auto = true
+    # FixIt NEW | 0.2.13 position of TOC ("left", "right")
+    position = "right"
+  # FixIt NEW | 0.2.13 Display a message at the beginning of an article to warn the reader that its content might be expired
+  [params.page.expirationReminder]
+    enable = false
+    # Display the reminder if the last modified time is more than 90 days ago
+    reminder = 90
+    # Display warning if the last modified time is more than 180 days ago
+    warning = 180
+    # If the article expires, close the comment or not
+    closeComment = false
+  # FixIt CHANGED | 0.2.0 KaTeX mathematical formulas (https://katex.org)
+  [params.page.math]
+    enable = true
+    # default block delimiter is $$ ... $$ and \\[ ... \\]
+    blockLeftDelimiter = ""
+    blockRightDelimiter = ""
+    # default inline delimiter is $ ... $ and \\( ... \\)
+    inlineLeftDelimiter = ""
+    inlineRightDelimiter = ""
+    # KaTeX extension copy_tex
+    copyTex = true
+    # KaTeX extension mhchem
+    mhchem = true
+  # FixIt NEW | 0.2.0 Code config
+  [params.page.code]
+    # whether to show the copy button of the code block
+    copy = true
+    # FixIt NEW | 0.2.13 whether to show the edit button of the code block
+    edit = true
+    # the maximum number of lines of displayed code by default
+    maxShownLines = 10
+  # FixIt NEW | 0.2.14 Post edit
+  [params.page.edit]
+    enable = false
+    # url = "https://github.com/user-name/repo-name/edit/branch-name/subdirectory-name" # Link for fork & edit
+    url = "" # Link for fork & edit
+  # FixIt NEW | 0.2.0 Mapbox GL JS config (https://docs.mapbox.com/mapbox-gl-js)
+  [params.page.mapbox]
+    # access token of Mapbox GL JS
+    accessToken = ""
+    # style for the light theme
+    lightStyle = "mapbox://styles/mapbox/light-v9"
+    # style for the dark theme
+    darkStyle = "mapbox://styles/mapbox/dark-v9"
+    # whether to add NavigationControl
+    navigation = true
+    # whether to add GeolocateControl
+    geolocate = true
+    # whether to add ScaleControl
+    scale = true
+    # whether to add FullscreenControl
+    fullscreen = true
+  # FixIt CHANGED | 0.2.0 social share links in post page
+  [params.page.share]
+    enable = true
+    Twitter = true
+    Facebook = true
+    Linkedin = false
+    Whatsapp = true
+    Pinterest = true
+    Tumblr = true
+    HackerNews = false
+    Reddit = false
+    VK = false
+    Buffer = false
+    Xing = false
+    Line = true
+    Instapaper = false
+    Pocket = false
+    Digg = false
+    Stumbleupon = false
+    Flipboard = false
+    Weibo = true
+    Renren = false
+    Myspace = true
+    Blogger = true
+    Baidu = false
+    Odnoklassniki = false
+    Evernote = true
+    Skype = false
+    Trello = false
+    Mix = false
+  # FixIt CHANGED | 0.2.13 Comment config
+  [params.page.comment]
+    enable = true
+    # FixIt NEW | 0.2.13 Artalk comment config (https://artalk.js.org/)
+    [params.page.comment.artalk]
+      enable = false
+      server = "https://localhost/api/"
+      site = "默认站点"
+      placeholder = ""
+      noComment = ""
+      sendBtn = ""
+      editorTravel = true
+      flatMode = 'auto'
+      maxNesting = 3
+      # It take effect when `params.page.lightgallery` is enabled
+      lightgallery = false
+    # Disqus comment config (https://disqus.com)
+    [params.page.comment.disqus]
+      # FixIt NEW | 0.1.1
+      enable = false
+      # Disqus shortname to use Disqus in posts
+      shortname = ""
+    # Gitalk comment config (https://github.com/gitalk/gitalk)
+    [params.page.comment.gitalk]
+      # FixIt NEW | 0.1.1
+      enable = true
+      owner = "ericvlog"
+      repo = "ericvlog.github.io"
+      clientId = "fe7d1c43ea639f51852c"
+      clientSecret = "e7a824e54df13f340cd540bc8b4df4ecc8b76d1e"
+    # Valine comment config (https://github.com/xCss/Valine)
+    [params.page.comment.valine]
+      enable = false
+      appId = ""
+      appKey = ""
+      placeholder = ""
+      avatar = "mp"
+      meta= ""
+      pageSize = 10
+      lang = ""
+      visitor = true
+      recordIP = true
+      highlight = true
+      enableQQ = false
+      serverURLs = ""
+      # FixIt NEW | 0.2.6 emoji data file name, default is "google.yml"
+      # ("apple.yml", "google.yml", "facebook.yml", "twitter.yml")
+      # located in "themes/FixIt/assets/data/emoji/" directory
+      # you can store your own data files in the same path under your project:
+      # "assets/data/emoji/"
+      emoji = ""
+      commentCount = true # FixIt NEW | 0.2.13
+    # FixIt NEW | 0.2.13 Waline comment config (https://waline.js.org)
+    [params.page.comment.waline]
+      enable = false
+      serverURL = ""
+      visitor = false
+      emoji = ['https://cdn.jsdelivr.net/gh/walinejs/emojis/weibo']
+      meta = ['nick', 'mail', 'link']
+      requiredMeta = []
+      login = 'enable'
+      wordLimit = 0
+      pageSize = 10
+      uploadImage = true
+      highlight = true
+      mathTagSupport = false
+      commentCount = true
+    # Facebook comment config (https://developers.facebook.com/docs/plugins/comments)
+    [params.page.comment.facebook]
+      enable = false
+      width = "100%"
+      numPosts = 10
+      appId = ""
+      languageCode = ""
+    # FixIt NEW | 0.2.0 Telegram comments config (https://comments.app)
+    [params.page.comment.telegram]
+      enable = false
+      siteID = ""
+      limit = 5
+      height = ""
+      color = ""
+      colorful = true
+      dislikes = false
+      outlined = false
+    # FixIt NEW | 0.2.0 Commento comment config (https://commento.io)
+    [params.page.comment.commento]
+      enable = false
+    # FixIt NEW | 0.2.5 Utterances comment config (https://utteranc.es)
+    [params.page.comment.utterances]
+      enable = false
+      # owner/repo
+      repo = ""
+      issueTerm = "pathname"
+      label = ""
+      lightTheme = "github-light"
+      darkTheme = "github-dark"
+    # FixIt NEW | 0.2.13 Twikoo comment config (https://twikoo.js.org/)
+    [params.page.comment.twikoo]
+      enable = false
+      envId = ""
+      region = ""
+      path = ""
+      visitor = true
+      commentCount = true
+      # It take effect when `params.page.lightgallery` is enabled
+      lightgallery = false
+    # FixIt NEW | 0.2.14 Giscus comments config
+    [params.page.comment.giscus]
+      enable = false
+      repo = ""
+      repoId = ""
+      category = ""
+      categoryId = ""
+      mapping = ""
+      reactionsEnabled = "1"
+      emitMetadata = "0"
+      inputPosition = "bottom" # top, bottom
+      lightTheme = "light"
+      darkTheme = "dark"
+      lazyLoad = true
+  # FixIt NEW | 0.2.7 Third-party library config
+  [params.page.library]
+    [params.page.library.css]
+      # someCSS = "some.css"
+      # located in "assets/"
+      # Or
+      # someCSS = "https://cdn.example.com/some.css"
+    [params.page.library.js]
+      # someJavascript = "some.js"
+      # located in "assets/"
+      # Or
+      # someJavascript = "https://cdn.example.com/some.js"
+  # FixIt CHANGED | 0.2.10 Page SEO config
+  [params.page.seo]
+    # image URL
+    images = []
+    # Publisher info
+    [params.page.seo.publisher]
+      name = ""
+      logoUrl = ""
 
 [menu]
   [[menu.main]]
