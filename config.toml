@@ -381,13 +381,13 @@ theme = "FixIt"
     # Disqus comment config (https://disqus.com)
     [params.page.comment.disqus]
       # FixIt NEW | 0.1.1
-      enable = false
+      enable = true
       # Disqus shortname to use Disqus in posts
-      shortname = ""
+      shortname = "ericvlog"
     # Gitalk comment config (https://github.com/gitalk/gitalk)
     [params.page.comment.gitalk]
       # FixIt NEW | 0.1.1
-      enable = true
+      enable = false
       owner = "ericvlog"
       repo = "ericvlog.github.io"
       clientId = "fe7d1c43ea639f51852c"

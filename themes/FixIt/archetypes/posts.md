@@ -2,14 +2,14 @@
 title: "{{ replace .TranslationBaseName "-" " " | title }}"
 subtitle: ""
 date: {{ .Date }}
-draft: true
-author: ""
+draft: false
+author: "Eric"
 authorLink: ""
-authorEmail: ""
-description: ""
+authorEmail: "plsharevme@gmail.com"
+description: "Hello welcome to my blogs"
 keywords: ""
 license: ""
-comment: false
+comment: true
 weight: 0
 
 tags:
