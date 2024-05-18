@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+    <meta name="robots" content="noodp" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+    <title>Armbian linux as nas - Eric vlog</title><meta name="author" content=": ">
+<meta name="description" content="hello,it me eric" />
+<meta name="keywords" content="linux,samba,raid" /><meta itemprop="name" content="Armbian linux as nas">
+<meta itemprop="description" content="hello,it me eric"><meta itemprop="datePublished" content="2022-05-13T01:11:58+08:00" />
+<meta itemprop="dateModified" content="2022-05-13T01:11:58+08:00" />
+<meta itemprop="wordCount" content="946"><meta itemprop="image" content="http://example.org/logo.png"/>
+<meta itemprop="keywords" content="linux,samba,nas,docker," /><meta property="og:title" content="Armbian linux as nas" />
+<meta property="og:description" content="hello,it me eric" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/linux-nas-samba/" /><meta property="og:image" content="http://example.org/logo.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-05-13T01:11:58+08:00" />
+<meta property="article:modified_time" content="2022-05-13T01:11:58+08:00" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="http://example.org/logo.png"/>
+
+<meta name="twitter:title" content="Armbian linux as nas"/>
+<meta name="twitter:description" content="hello,it me eric"/>
+<meta name="application-name" content="Eric vlog">
+<meta name="apple-mobile-web-app-title" content="Eric vlog"><meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff"><meta name="theme-color" media="(prefers-color-scheme: dark)" content="#252627"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://example.org/posts/linux-nas-samba/" /><link rel="prev" href="http://example.org/posts/speculation-principle/" /><link rel="next" href="http://example.org/posts/samadhi-part-1-maya-the-illusion-of-the-self/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Armbian linux as nas",
+    "inLanguage": "en",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "http:\/\/example.org\/posts\/linux-nas-samba\/"
+    },"genre": "posts","keywords": "linux, samba, nas, docker","wordcount":  946 ,
+    "url": "http:\/\/example.org\/posts\/linux-nas-samba\/","datePublished": "2022-05-13T01:11:58+08:00","dateModified": "2022-05-13T01:11:58+08:00","publisher": {
+      "@type": "Organization",
+      "name": ""},"author": {
+        "@type": "Person",
+        "name": "eric"
+      },"description": "hello,it me eric"
+  }
+  </script></head>
+  <body header-desktop="sticky" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script><div class="wrapper"><header class="desktop" id="header-desktop">
+  <div class="header-wrapper">
+    <div class="header-title">
+      <a href="/" title="Eric vlog"><span id="typeit-header-desktop" class="typeit"></span></a></div>
+    <nav>
+      <ul class="menu"><li
+              class="menu-item"
+              
+            >
+              <a
+                class="menu-link"
+                href="/posts/"
+                
+                
+              >Posts</a></li><li
+              class="menu-item"
+              
+            >
+              <a
+                class="menu-link"
+                href="/tags/"
+                
+                
+              >Tags</a></li><li
+              class="menu-item"
+              
+            >
+              <a
+                class="menu-link"
+                href="/categories/"
+                
+                
+              >Categories</a></li><li class="menu-item delimiter"></li><li class="menu-item search" id="search-desktop">
+            <input type="text" placeholder="Search titles or contents ..." id="search-input-desktop">
+            <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+              <i class="fas fa-search fa-fw"></i>
+            </a>
+            <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+              <i class="fas fa-times-circle fa-fw"></i>
+            </a>
+            <span class="search-button search-loading" id="search-loading-desktop">
+              <i class="fas fa-spinner fa-fw fa-spin"></i>
+            </span>
+          </li><li class="menu-item theme-switch" title="Switch Theme">
+          <i class="fas fa-adjust fa-fw"></i>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header><header class="mobile" id="header-mobile">
+  <div class="header-container">
+    <div class="header-wrapper">
+      <div class="header-title">
+        <a href="/" title="Eric vlog"><span id="typeit-header-title-mobile" class="typeit"></span></a></div>
+      <div class="menu-toggle" id="menu-toggle-mobile">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+    <nav>
+      <ul class="menu" id="menu-mobile"><li class="search-wrapper">
+            <div class="search mobile" id="search-mobile">
+              <input type="text" placeholder="Search titles or contents ..." id="search-input-mobile">
+              <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                <i class="fas fa-search fa-fw"></i>
+              </a>
+              <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                <i class="fas fa-times-circle fa-fw"></i>
+              </a>
+              <span class="search-button search-loading" id="search-loading-mobile">
+                <i class="fas fa-spinner fa-fw fa-spin"></i>
+              </span>
+            </div>
+            <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+              Cancel
+            </a>
+          </li><li
+              class="menu-item"
+            ><a
+                class="menu-link"
+                href="/posts/"
+                
+                
+              >Posts</a></li><li
+              class="menu-item"
+            ><a
+                class="menu-link"
+                href="/tags/"
+                
+                
+              >Tags</a></li><li
+              class="menu-item"
+            ><a
+                class="menu-link"
+                href="/categories/"
+                
+                
+              >Categories</a></li><li class="menu-item theme-switch" title="Switch Theme">
+          <i class="fas fa-adjust fa-fw"></i>
+        </li></ul>
+    </nav>
+  </div>
+</header>
+<div class="search-dropdown desktop">
+  <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+  <div id="search-dropdown-mobile"></div>
+</div>
+<main class="container" page-style="normal"><aside class="toc" id="toc-auto"><h2 class="toc-title">Contents</h2>
+      <div class="toc-content" id="toc-content-auto"></div></aside>
+
+  <aside class="aside-custom">
+    
+  </aside>
+
+  <article class="page single"><h1 class="single-title animate__animated animate__flipInX">Armbian linux as nas</h1><h2 class="single-subtitle">Step by step configuration linux as nas</h2><div class="post-meta">
+      <div class="post-meta-line"><span class="post-author"><span class="author"><i class="fas fa-user-circle"></i>
+      eric</span></span>
+          <span class="post-category">included in <a href="/categories/computer/"><i class="far fa-folder fa-fw"></i>&nbsp;computer</a></span></div>
+      <div class="post-meta-line"><span title=2022-05-13&#32;01:11:58>
+            <i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="13-05-2022" >13-05-2022</time>
+          </span>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;946 words&nbsp;
+        <i class="far fa-clock fa-fw"></i>&nbsp;5 minutes&nbsp;</div>
+    </div><div class="details toc" id="toc-static" kept="false">
+        <div class="details-summary toc-title">
+          <span>Contents</span>
+          <span><i class="details-icon fas fa-angle-right"></i></span>
+        </div>
+        <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#install-docker--portainer-20-on-debian-based-distros">Install Docker &amp; Portainer 2.0 on Debian Based Distros!</a></li>
+    <li><a href="#mount-hardisk-in-armbian">Mount hardisk in armbian.</a></li>
+    <li><a href="#set-up-samba-shares">Set up Samba Shares</a></li>
+  </ul>
+
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#how-to-view-linux-machines-from-a-windows-10-network">How To View Linux Machines from a Windows 10 Network</a></li>
+        <li><a href="#disable-zram-optional">Disable zram <strong>Optional</strong></a></li>
+        <li><a href="#credits">Credits</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+      </div><div class="content" id="content"><h2 id="install-docker--portainer-20-on-debian-based-distros">Install Docker &amp; Portainer 2.0 on Debian Based Distros!</h2>
+<ol>
+<li>Install and start docker by running the commands below.</li>
+</ol>
+<p><code>sudo apt install docker.io</code>
+<code>sudo systemctl start docker</code></p>
+<ol start="2">
+<li>Download and run Portainer 2.0 by running the commands below.</li>
+</ol>
+<p><code>sudo docker pull portainer/portainer-ce</code>
+<code>sudo docker run --restart=always --name=portainer -d -p 9000:9000 -v /var/run/docker.sock:/var/run/docker.sock portainer/portainer-ce</code></p>
+<ol start="3">
+<li>This will install Docker and it will be accessible by the workstation’s IP address and port 9000. When you get there, create a username and password.</li>
+</ol>
+<p>http://[WORKSTATION_IP_ADDRESS]:9000</p>
+<ol start="4">
+<li>Give user permission for docker.</li>
+</ol>
+<pre tabindex="0"><code>sudo groupadd docker
+sudo usermod -aG docker $USER
+</code></pre><p>logout &amp; login ssh.</p>
+<h2 id="mount-hardisk-in-armbian">Mount hardisk in armbian.</h2>
+<p>useful command</p>
+<pre tabindex="0"><code>lsblk #check hardisk &#39;add -f&#39; for checking file system of drive.
+sudo blkid #check hardisk uuid.
+mount /dev/fromlsblk /mountpoint #mount hardisk command.
+</code></pre><p>Let&rsquo;s suppose we have a single disk drive and want it to be available at /mnt/wd, run the following commands</p>
+<p>sudo mkdir /mnt/wd
+sudo chown -hR $(whoami):$(whoami) /mnt/wd
+The next thing we have to do is edit /etc/fstab file and include the new path so that our disk drive will be recognized the next time we restart.</p>
+<p>Run the following command and take a note of the ID number of the disk drive you want to automatically mount.</p>
+<p><code>sudo blkid</code></p>
+<p>Having the correct disk ID, we now edit /etc/fstab</p>
+<p><code>sudo nano /etc/fstab</code>
+Then we add a new line to the end of /etc/fstab so that the system knows what to mount and where.</p>
+<p>UUID=&ldquo;ID From blkid&rdquo; /mnt/hdd1    ext4 rw,user,auto 0    0</p>
+<h2 id="set-up-samba-shares">Set up Samba Shares</h2>
+<p>Samba allows you to share files via the <a
+  href="https://en.wikipedia.org/wiki/Server_Message_Block"
+  
+  
+    
+    
+    target="_blank"
+  
+  
+    rel="external nofollow noopener noreffer"
+  
+  
+  
+  
+>SMB network protocol</a>. Basically this means file and print services for various Microsoft Windows clients and integration with a Microsoft Windows Server domain.</p>
+<p>First you need to install samba and smbfs by running.</p>
+<p><code>sudo apt-get install samba smbfs</code></p>
+<p>After the installation is done, edit <code>/etc/samba/smb.conf</code> to include settings for the share folders. In the example, we&rsquo;re sharing /mnt/wd with both read and write permission.</p>
+<h1 id="nas-share-directory">NAS share directory</h1>
+<p>Install dependencies:
+<code>sudo apt install samba samba-common-bin</code></p>
+<p>Setup Network Shares
+Edit the Samba config:</p>
+<p><code>sudo nano /etc/samba/smb.conf</code>
+Add the following to the end of the smb.conf file:</p>
+<pre tabindex="0"><code>[mynas]
+	comment = Samba on My NAS
+	path = /patch
+	read only = no
+	browsable = yes
+</code></pre><p>This creates a share called “mynas” allowing access to all the drives mounted under the /mnt folder.
+Read-only is set to no, which permits modifying and writing data to the share.
+Browsable allows the share to be seen by a Linux file manager or Windows Explorer.</p>
+<p>Add user account to access the Samba share
+Since Samba doesn’t use the system account password, we need to set up a Samba password for our user account:
+You can also specify a different username, although it must exist on the system.</p>
+<p><code>sudo smbpasswd -a $(whoami)</code>
+<code>sudo smbpasswd -a anotheruser</code></p>
+<p>Restart Samba
+<code>sudo service smbd restart</code></p>
+<p>Connect to the Share
+You can now connect to the share using \IP address of NAS from Windows Explorer.</p>
+<p>Or smb://IP address of NAS from a Linux file manager.</p>
+<h3 id="how-to-view-linux-machines-from-a-windows-10-network">How To View Linux Machines from a Windows 10 Network</h3>
+<p>Installing WSD on Ubuntu
+wsdd is a service by <a
+  href="https://github.com/christgau/wsdd"
+  
+  
+    
+    
+    target="_blank"
+  
+  
+    rel="external nofollow noopener noreffer"
+  
+  
+  
+  
+>christgau</a> on GitHub, which implements a Web Service Discovery host daemon for Ubuntu. This enables Samba hosts to be found by Web Service Discovery Clients like Windows 10.</p>
+<p>If you are experiencing any issues with this service, please let us know in the comments or <a
+  href="https://github.com/christgau/wsdd/issues"
+  
+  
+    
+    
+    target="_blank"
+  
+  
+    rel="external nofollow noopener noreffer"
+  
+  
+  
+  
+>submit an issue on GitHub.</a></p>
+<p>Change to /tmp directory.</p>
+<p><code>cd /tmp</code></p>
+<p>Download and unzip the archive.</p>
+<p><code>wget https://github.com/christgau/wsdd/archive/master.zip</code></p>
+<p><code>unzip master.zip</code></p>
+<p>Rename wsdd.py to wsdd.</p>
+<p><code>sudo mv wsdd-master/src/wsdd.py wsdd-master/src/wsdd</code></p>
+<p>Copy to /usr/bin.</p>
+<p><code>sudo cp wsdd-master/src/wsdd /usr/bin</code></p>
+<p>Copy wsdd to /etc/systemd/system.</p>
+<p><code>sudo cp wsdd-master/etc/systemd/wsdd.service /etc/systemd/system</code></p>
+<p>Open wsdd.service in nano and comment out User=nobody and Group=nobody with a ; semicolon.</p>
+<p><code>sudo nano /etc/systemd/system/wsdd.service</code></p>
+<p>If you found out below code different from yours just copy and paste it under [Service] to remove original code.</p>
+<pre tabindex="0"><code>/etc/systemd/system/wsdd.service
+[Unit]
+Description=Web Services Dynamic Discovery host daemon
+; Start after the network has been configured
+After=network-online.target
+Wants=network-online.target
+; It makes sense to have Samba running when wsdd starts, but is not required
+;Wants=smb.service
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/wsdd --shortlog
+; Replace those with an unprivledged user/group that matches your environment,
+; like nobody/nogroup or daemon:daemon or a dedicated user for wsdd
+; User=nobody 
+; Group=nobody
+; The following lines can be used for a chroot execution of wsdd.
+; Also append &#39;--chroot /run/wsdd/chroot&#39; to ExecStart to enable chrooting
+;AmbientCapabilities=CAP_SYS_CHROOT
+;ExecStartPre=/usr/bin/install -d -o nobody -g nobody -m 0700 /run/wsdd/chroot
+;ExecStopPost=rmdir /run/wsdd/chroot
+
+[Install]
+WantedBy=multi-user.target
+</code></pre><p>Save and exit (press CTRL + X, press Y and then press ENTER)
+Reload daemon.</p>
+<p><code>sudo systemctl daemon-reload</code></p>
+<p>Start and enable wsdd.</p>
+<p><code>sudo systemctl start wsdd</code></p>
+<p><code>sudo systemctl enable wsdd</code></p>
+<p>Output:</p>
+<p>Created symlink /etc/systemd/system/multi-user.target.wants/wsdd.service → /etc/systemd/system/wsdd.service.</p>
+<p>Now check that the service is running.</p>
+<p><code>sudo service wsdd status</code></p>
+<p>Output:</p>
+<p>● wsdd.service - Web Services Dynamic Discovery host daemon
+Loaded: loaded (/etc/systemd/system/wsdd.service; enabled; vendor preset: enabled)
+Active: active (running) since Wed 2020-06-10 10:51:39 CEST; 8s ago
+Main PID: 40670 (python3)
+Tasks: 1 (limit: 6662)
+Memory: 10.8M
+CGroup: /system.slice/wsdd.service
+└─40670 python3 /usr/bin/wsdd &ndash;shortlog</p>
+<p>jun 10 10:51:39 ubuntu systemd[1]: Started Web Services Dynamic Discovery host daemon.
+jun 10 10:51:40 ubuntu wsdd[40670]: WARNING: no interface given, using all interfaces</p>
+<p>You should now be able to browse your Ubuntu machines and Samba shares in the Windows 10 file explorer. You may need to restart the Windows 10 machines to force discovery.</p>
+<p>You may also want to reboot the Ubuntu server just to make sure the wsdd service starts up automatically without issue.</p>
+<h3 id="disable-zram-optional">Disable zram <strong>Optional</strong></h3>
+<p><code>sudo vim /etc/default/armbian-zram-config</code>
+A few lines down the file, uncomment the line that says SWAP=false:</p>
+<p>Zram swap enabled by default, unless set to disabled</p>
+<p>SWAP=false
+Reboot, and the zram swap is gone.</p>
+<hr>
+<h3 id="credits">Credits</h3>
+<p><a
+  href="https://devanswers.co/discover-ubuntu-machines-samba-shares-windows-10-network/"
+  
+  
+    
+    
+    target="_blank"
+  
+  
+    rel="external nofollow noopener noreffer"
+  
+  
+  
+  
+>https://devanswers.co/discover-ubuntu-machines-samba-shares-windows-10-network/</a></p>
+</div><div class="post-footer" id="post-footer">
+  <div class="post-info">
+    <div class="post-info-line">
+      <div class="post-info-mod">
+        <span title=2022-05-13&#32;01:11:58>Updated on 13-05-2022</span>
+      </div>
+      <div class="post-info-license"></div>
+    </div>
+    <div class="post-info-line">
+      <div class="post-info-md"></div>
+      <div class="post-info-share">
+        <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://example.org/posts/linux-nas-samba/" data-title="Armbian linux as nas" data-hashtags="linux,samba,nas,docker"><i class="fab fa-twitter fa-fw"></i></a>
+  <a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://example.org/posts/linux-nas-samba/" data-hashtag="linux"><i class="fab fa-facebook-square fa-fw"></i></a>
+  <a href="javascript:void(0);" title="Share on WhatsApp" data-sharer="whatsapp" data-url="http://example.org/posts/linux-nas-samba/" data-title="Armbian linux as nas" data-web><i class="fab fa-whatsapp fa-fw"></i></a>
+  <a href="javascript:void(0);" title="Share on Pinterest" data-sharer="pinterest" data-url="http://example.org/posts/linux-nas-samba/" data-description="hello,it me eric"><i class="fab fa-pinterest fa-fw"></i></a>
+  <a href="javascript:void(0);" title="Share on Tumblr" data-sharer="tumblr" data-url="http://example.org/posts/linux-nas-samba/" data-title="Armbian linux as nas" data-caption="hello,it me eric" data-tags="linux,samba,nas,docker"><i class="fab fa-tumblr fa-fw"></i></a>
+  <a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://example.org/posts/linux-nas-samba/" data-title="Armbian linux as nas"><i data-svg-src="/lib/simple-icons/icons/line.min.svg"></i></a>
+  <a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://example.org/posts/linux-nas-samba/" data-title="Armbian linux as nas"><i class="fab fa-weibo fa-fw"></i></a>
+  <a href="javascript:void(0);" title="Share on Myspace" data-sharer="myspace" data-url="http://example.org/posts/linux-nas-samba/" data-title="Armbian linux as nas" data-description="hello,it me eric"><i data-svg-src="/lib/simple-icons/icons/myspace.min.svg"></i></a>
+  <a href="javascript:void(0);" title="Share on Blogger" data-sharer="blogger" data-url="http://example.org/posts/linux-nas-samba/" data-title="Armbian linux as nas" data-description="hello,it me eric"><i class="fab fa-blogger fa-fw"></i></a>
+  <a href="javascript:void(0);" title="Share on Evernote" data-sharer="evernote" data-url="http://example.org/posts/linux-nas-samba/" data-title="Armbian linux as nas"><i class="fab fa-evernote fa-fw"></i></a>
+  </span>
+      </div>
+    </div>
+  </div>
+
+  <div class="post-info-more">
+    <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/linux/">linux</a>,&nbsp;<a href="/tags/samba/">samba</a>,&nbsp;<a href="/tags/nas/">nas</a>,&nbsp;<a href="/tags/docker/">docker</a></section>
+    <section>
+      <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+    </section>
+  </div>
+
+  <div class="post-nav"><a href="/posts/speculation-principle/" class="prev" rel="prev" title="Speculation Principle"><i class="fas fa-angle-left fa-fw"></i>Speculation Principle</a>
+      <a href="/posts/samadhi-part-1-maya-the-illusion-of-the-self/" class="next" rel="next" title="三摩地影片第1部 - “幻象，自我的迷失">三摩地影片第1部 - “幻象，自我的迷失<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id="comments"><div id="disqus_thread" class="comment"></div><noscript>
+        Please enable JavaScript to view the comments powered by <a href="https://disqus.com/?ref_noscript" rel="external nofollow noopener noreffer">Disqus</a>.
+      </noscript></div></article></main><footer class="footer">
+    <div class="footer-container"><div class="footer-line powered">Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer" title="Hugo 0.117.0">Hugo</a> | Theme - <a href="https://github.com/Lruihao/FixIt" target="_blank" rel="external nofollow noopener noreffer" title="FixIt v0.2.14-RC"><img class="fixit-icon" src="/images/fixit.svg" alt="FixIt logo" />&nbsp;FixIt</a>
+        </div><div class="footer-line copyright"><i class="far fa-copyright fa-fw"></i>
+            <span itemprop="copyrightYear">2019 - 2024</span><span class="author" itemprop="copyrightHolder">
+              <a
+  href="/"
+  
+  
+  
+  
+  
+  
+></a></span><span class="license footer-divider"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div><div class="footer-line statistics"></div></div>
+  </footer></div><div class="widgets">
+  <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+      <i class="fas fa-arrow-up fa-fw"></i>
+    </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+      <i class="fas fa-comment fa-fw"></i>
+    </a>
+  </div><div id="mask"></div>
+</div><script type="text/javascript" src="https://ericvlog.disqus.com/embed.js" defer></script><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js" defer></script><script type="text/javascript" src="/lib/lunr/lunr.min.js" defer></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js" async defer></script><script type="text/javascript" src="/lib/sharer/sharer.min.js" async defer></script><script type="text/javascript" src="/lib/typeit/typeit.min.js" defer></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","editLockTitle":"Lock editable code block","editUnLockTitle":"Unlock editable code block","editable":true,"maxShownLines":10},"comment":{},"data":{"typeit-header-desktop":"ωєℓ¢σмє тσ му вℓσg","typeit-header-title-mobile":"ωєℓ¢σмє тσ му вℓσg"},"enablePWA":true,"search":{"highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30},"typeit":{"cursorChar":null,"cursorSpeed":null,"data":{"typeit-header-desktop":["typeit-header-desktop"],"typeit-header-title-mobile":["typeit-header-title-mobile"]},"duration":null,"speed":null}};</script><script type="text/javascript" src="/js/theme.min.js" defer></script></body>
+</html>

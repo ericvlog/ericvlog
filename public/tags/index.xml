@@ -1,0 +1,77 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>Tags - Tag - Eric vlog</title>
+    <link>http://example.org/tags/</link>
+    <description>Tags - Tag - Eric vlog</description>
+    <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Wed, 30 Aug 2023 15:50:06 &#43;0800</lastBuildDate><atom:link href="http://example.org/tags/" rel="self" type="application/rss+xml" /><item>
+  <title>前世今生</title>
+  <link>http://example.org/tags/%E5%89%8D%E4%B8%96%E4%BB%8A%E7%94%9F/</link>
+  <pubDate>Wed, 30 Aug 2023 15:50:06 &#43;0800</pubDate>
+  <author>Author</author>
+  <guid>http://example.org/tags/%E5%89%8D%E4%B8%96%E4%BB%8A%E7%94%9F/</guid>
+  <description><![CDATA[]]></description>
+</item><item>
+  <title>灵修</title>
+  <link>http://example.org/tags/%E7%81%B5%E4%BF%AE/</link>
+  <pubDate>Wed, 30 Aug 2023 15:50:06 &#43;0800</pubDate>
+  <author>Author</author>
+  <guid>http://example.org/tags/%E7%81%B5%E4%BF%AE/</guid>
+  <description><![CDATA[]]></description>
+</item><item>
+  <title>疗愈</title>
+  <link>http://example.org/tags/%E7%96%97%E6%84%88/</link>
+  <pubDate>Wed, 30 Aug 2023 15:50:06 &#43;0800</pubDate>
+  <author>Author</author>
+  <guid>http://example.org/tags/%E7%96%97%E6%84%88/</guid>
+  <description><![CDATA[]]></description>
+</item><item>
+  <title>ego</title>
+  <link>http://example.org/tags/ego/</link>
+  <pubDate>Wed, 23 Aug 2023 11:42:04 &#43;0800</pubDate>
+  <author>Author</author>
+  <guid>http://example.org/tags/ego/</guid>
+  <description><![CDATA[]]></description>
+</item><item>
+  <title>higher self</title>
+  <link>http://example.org/tags/higher-self/</link>
+  <pubDate>Wed, 23 Aug 2023 11:42:04 &#43;0800</pubDate>
+  <author>Author</author>
+  <guid>http://example.org/tags/higher-self/</guid>
+  <description><![CDATA[]]></description>
+</item><item>
+  <title>samadhi</title>
+  <link>http://example.org/tags/samadhi/</link>
+  <pubDate>Wed, 23 Aug 2023 11:42:04 &#43;0800</pubDate>
+  <author>Author</author>
+  <guid>http://example.org/tags/samadhi/</guid>
+  <description><![CDATA[]]></description>
+</item><item>
+  <title>spirits</title>
+  <link>http://example.org/tags/spirits/</link>
+  <pubDate>Wed, 23 Aug 2023 11:42:04 &#43;0800</pubDate>
+  <author>Author</author>
+  <guid>http://example.org/tags/spirits/</guid>
+  <description><![CDATA[]]></description>
+</item><item>
+  <title>三摩地</title>
+  <link>http://example.org/tags/%E4%B8%89%E6%91%A9%E5%9C%B0/</link>
+  <pubDate>Tue, 22 Aug 2023 23:01:04 &#43;0800</pubDate>
+  <author>Author</author>
+  <guid>http://example.org/tags/%E4%B8%89%E6%91%A9%E5%9C%B0/</guid>
+  <description><![CDATA[]]></description>
+</item><item>
+  <title>意识</title>
+  <link>http://example.org/tags/%E6%84%8F%E8%AF%86/</link>
+  <pubDate>Tue, 22 Aug 2023 23:01:04 &#43;0800</pubDate>
+  <author>Author</author>
+  <guid>http://example.org/tags/%E6%84%8F%E8%AF%86/</guid>
+  <description><![CDATA[]]></description>
+</item><item>
+  <title>灵性</title>
+  <link>http://example.org/tags/%E7%81%B5%E6%80%A7/</link>
+  <pubDate>Tue, 22 Aug 2023 23:01:04 &#43;0800</pubDate>
+  <author>Author</author>
+  <guid>http://example.org/tags/%E7%81%B5%E6%80%A7/</guid>
+  <description><![CDATA[]]></description>
+</item></channel>
+</rss>

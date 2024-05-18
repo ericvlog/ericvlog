@@ -1,0 +1,16 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>linux - Tag - Eric vlog</title>
+    <link>http://example.org/tags/linux/</link>
+    <description>linux - Tag - Eric vlog</description>
+    <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Fri, 13 May 2022 01:11:58 &#43;0800</lastBuildDate><atom:link href="http://example.org/tags/linux/" rel="self" type="application/rss+xml" /><item>
+  <title>Armbian linux as nas</title>
+  <link>http://example.org/posts/linux-nas-samba/</link>
+  <pubDate>Fri, 13 May 2022 01:11:58 &#43;0800</pubDate>
+  <author>eric</author>
+  <guid>http://example.org/posts/linux-nas-samba/</guid>
+  <description><![CDATA[Install Docker &amp; Portainer 2.0 on Debian Based Distros! Install and start docker by running the commands below. sudo apt install docker.io sudo systemctl start docker
+Download and run Portainer 2.0 by running the commands below. sudo docker pull portainer/portainer-ce sudo docker run --restart=always --name=portainer -d -p 9000:9000 -v /var/run/docker.sock:/var/run/docker.sock portainer/portainer-ce
+This will install Docker and it will be accessible by the workstation’s IP address and port 9000. When you get there, create a username and password.]]></description>
+</item></channel>
+</rss>

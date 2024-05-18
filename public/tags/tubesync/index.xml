@@ -1,0 +1,14 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>tubesync - Tag - Eric vlog</title>
+    <link>http://example.org/tags/tubesync/</link>
+    <description>tubesync - Tag - Eric vlog</description>
+    <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Thu, 12 May 2022 22:21:50 &#43;0800</lastBuildDate><atom:link href="http://example.org/tags/tubesync/" rel="self" type="application/rss+xml" /><item>
+  <title>Tubesync and Postgresql Guide</title>
+  <link>http://example.org/posts/tubesync-and-postgresql-guide/</link>
+  <pubDate>Thu, 12 May 2022 22:21:50 &#43;0800</pubDate>
+  <author>Eric</author>
+  <guid>http://example.org/posts/tubesync-and-postgresql-guide/</guid>
+  <description><![CDATA[]]></description>
+</item></channel>
+</rss>
