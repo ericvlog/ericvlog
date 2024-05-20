@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+    <meta name="robots" content="noodp" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+    <title>Armbian linux as nas - Eric vlog</title><meta name="author" content=": ">
+<meta name="description" content="hello,it me eric" />
+<meta name="keywords" content="linux,samba,raid" /><meta itemprop="name" content="Armbian linux as nas">
+<meta itemprop="description" content="hello,it me eric"><meta itemprop="datePublished" content="2022-05-13T01:11:58+08:00" />
+<meta itemprop="dateModified" content="2022-05-13T01:11:58+08:00" />
+<meta itemprop="wordCount" content="564"><meta itemprop="image" content="http://example.org/logo.png"/>
+<meta itemprop="keywords" content="linux,samba,nas,docker," /><meta property="og:title" content="Armbian linux as nas" />
+<meta property="og:description" content="hello,it me eric" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/linux-nas-samba/" /><meta property="og:image" content="http://example.org/logo.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-05-13T01:11:58+08:00" />
+<meta property="article:modified_time" content="2022-05-13T01:11:58+08:00" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="http://example.org/logo.png"/>
+
+<meta name="twitter:title" content="Armbian linux as nas"/>
+<meta name="twitter:description" content="hello,it me eric"/>
+<meta name="application-name" content="Eric vlog">
+<meta name="apple-mobile-web-app-title" content="Eric vlog"><meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff"><meta name="theme-color" media="(prefers-color-scheme: dark)" content="#252627"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://example.org/posts/linux-nas-samba/" /><link rel="prev" href="http://example.org/posts/speculation-principle/" /><link rel="next" href="http://example.org/posts/samadhi-part-1-maya-the-illusion-of-the-self/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Armbian linux as nas",
+    "inLanguage": "en",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "http:\/\/example.org\/posts\/linux-nas-samba\/"
+    },"genre": "posts","keywords": "linux, samba, nas, docker","wordcount":  564 ,
+    "url": "http:\/\/example.org\/posts\/linux-nas-samba\/","datePublished": "2022-05-13T01:11:58+08:00","dateModified": "2022-05-13T01:11:58+08:00","publisher": {
+      "@type": "Organization",
+      "name": ""},"author": {
+        "@type": "Person",
+        "name": "eric"
+      },"description": "hello,it me eric"
+  }
+  </script></head>
+  <body header-desktop="sticky" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script><div class="wrapper"><header class="desktop" id="header-desktop">
+  <div class="header-wrapper">
+    <div class="header-title">
+      <a href="/" title="Eric vlog"><span class="header-title-text">ωєℓ¢σмє тσ му вℓσg</span></a></div>
+    <nav>
+      <ul class="menu"><li
+              class="menu-item"
+              
+            >
+              <a
+                class="menu-link"
+                href="/posts/"
+                
+                
+              >Posts</a></li><li
+              class="menu-item"
+              
+            >
+              <a
+                class="menu-link"
+                href="/tags/"
+                
+                
+              >Tags</a></li><li
+              class="menu-item"
+              
+            >
+              <a
+                class="menu-link"
+                href="/categories/"
+                
+                
+              >Categories</a></li><li class="menu-item delimiter"></li><li class="menu-item search" id="search-desktop">
+            <input type="text" placeholder="Search titles or contents ..." id="search-input-desktop">
+            <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+              <i class="fas fa-search fa-fw"></i>
+            </a>
+            <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+              <i class="fas fa-times-circle fa-fw"></i>
+            </a>
+            <span class="search-button search-loading" id="search-loading-desktop">
+              <i class="fas fa-spinner fa-fw fa-spin"></i>
+            </span>
+          </li><li class="menu-item theme-switch" title="Switch Theme">
+          <i class="fas fa-adjust fa-fw"></i>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header><header class="mobile" id="header-mobile">
+  <div class="header-container">
+    <div class="header-wrapper">
+      <div class="header-title">
+        <a href="/" title="Eric vlog"><span class="header-title-text">ωєℓ¢σмє тσ му вℓσg</span></a></div>
+      <div class="menu-toggle" id="menu-toggle-mobile">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+    <nav>
+      <ul class="menu" id="menu-mobile"><li class="search-wrapper">
+            <div class="search mobile" id="search-mobile">
+              <input type="text" placeholder="Search titles or contents ..." id="search-input-mobile">
+              <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                <i class="fas fa-search fa-fw"></i>
+              </a>
+              <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                <i class="fas fa-times-circle fa-fw"></i>
+              </a>
+              <span class="search-button search-loading" id="search-loading-mobile">
+                <i class="fas fa-spinner fa-fw fa-spin"></i>
+              </span>
+            </div>
+            <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+              Cancel
+            </a>
+          </li><li
+              class="menu-item"
+            ><a
+                class="menu-link"
+                href="/posts/"
+                
+                
+              >Posts</a></li><li
+              class="menu-item"
+            ><a
+                class="menu-link"
+                href="/tags/"
+                
+                
+              >Tags</a></li><li
+              class="menu-item"
+            ><a
+                class="menu-link"
+                href="/categories/"
+                
+                
+              >Categories</a></li><li class="menu-item theme-switch" title="Switch Theme">
+          <i class="fas fa-adjust fa-fw"></i>
+        </li></ul>
+    </nav>
+  </div>
+</header>
+<div class="search-dropdown desktop">
+  <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+  <div id="search-dropdown-mobile"></div>
+</div>
+<main class="container" page-style="normal"><aside class="toc" id="toc-auto"><h2 class="toc-title">Contents</h2>
+      <div class="toc-content" id="toc-content-auto"></div></aside>
+
+  <aside class="aside-custom">
+    
+  </aside>
+
+  <article class="page single"><h1 class="single-title animate__animated animate__flipInX">Armbian linux as nas</h1><h2 class="single-subtitle">Step by step configuration linux as nas</h2><div class="post-meta">
+      <div class="post-meta-line"><span class="post-author"><span class="author"><i class="fas fa-user-circle"></i>
+      eric</span></span>
+          <span class="post-category">included in <a href="/categories/computer/"><i class="far fa-folder fa-fw"></i>&nbsp;computer</a></span></div>
+      <div class="post-meta-line"><span title=2022-05-13&#32;01:11:58>
+            <i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="13-05-2022" >13-05-2022</time>
+          </span>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;564 words&nbsp;
+        <i class="far fa-clock fa-fw"></i>&nbsp;3 minutes&nbsp;</div>
+    </div><div class="details toc" id="toc-static" kept="false">
+        <div class="details-summary toc-title">
+          <span>Contents</span>
+          <span><i class="details-icon fas fa-angle-right"></i></span>
+        </div>
+        <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-install-sudo-command">1. Install <code>sudo</code> Command</a></li>
+    <li><a href="#2--install-docker--portainer-20-on-debian-based-distros">2. 🐋 Install Docker &amp; Portainer 2.0 on Debian-Based Distros</a></li>
+    <li><a href="#3--install-docker-compose-v2">3. 📦 Install Docker Compose v2</a></li>
+    <li><a href="#4--add-a-new-user-and-assign-to-sudo-and-docker-groups">4. 👤 Add a New User and Assign to <code>sudo</code> and <code>docker</code> Groups</a></li>
+    <li><a href="#5--mount-hard-disk-in-armbian">5. 💾 Mount Hard Disk in Armbian</a></li>
+    <li><a href="#6--set-up-samba-shares">6. 🗂️ Set up Samba Shares</a></li>
+    <li><a href="#7--view-linux-machines-from-a-windows-10-network">7. 🌐 View Linux Machines from a Windows 10 Network</a></li>
+    <li><a href="#8--disable-zram-optional">8. ❌ Disable ZRAM (Optional)</a></li>
+    <li><a href="#9--mount-raid-0-on-debian">9. ⚙️ Mount RAID 0 on Debian</a></li>
+  </ul>
+</nav></div>
+      </div><div class="content" id="content"><h1 id="-step-by-step-guide-for-setting-up-your-debian-server">🚀 Step-by-Step Guide for Setting Up Your Debian Server</h1>
+<h2 id="1-install-sudo-command">1. Install <code>sudo</code> Command</h2>
+<ol>
+<li>Switch to root user:
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">su -
+</span></span></code></pre></div></li>
+<li>Install <code>sudo</code>:
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">apt-get install sudo
+</span></span></code></pre></div></li>
+<li>Add user to sudo groups:
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">usermod -aG sudo username
+</span></span></code></pre></div></li>
+<li>Check user groups:
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">id username
+</span></span></code></pre></div></li>
+<li>Logout and login SSH again.</li>
+</ol>
+<h2 id="2--install-docker--portainer-20-on-debian-based-distros">2. 🐋 Install Docker &amp; Portainer 2.0 on Debian-Based Distros</h2>
+<ol>
+<li>
+<p>Install Docker:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo apt install docker.io
+</span></span><span class="line"><span class="cl">sudo systemctl start docker
+</span></span></code></pre></div></li>
+<li>
+<p>Download and run Portainer 2.0:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo docker pull portainer/portainer-ce
+</span></span><span class="line"><span class="cl">sudo docker run --restart<span class="o">=</span>always --name<span class="o">=</span>portainer -d -p 9000:9000 -v /var/run/docker.sock:/var/run/docker.sock portainer/portainer-ce
+</span></span></code></pre></div></li>
+<li>
+<p>Access Portainer at <a
+  href="http://[WORKSTATION_IP_ADDRESS]:9000"
+  
+  
+    
+    
+    target="_blank"
+  
+  
+    rel="external nofollow noopener noreffer"
+  
+  
+  
+  
+>http://[WORKSTATION_IP_ADDRESS]:9000</a> and create a username and password.</p>
+</li>
+<li>
+<p>Give user permission for Docker:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo groupadd docker
+</span></span><span class="line"><span class="cl">sudo usermod -aG docker <span class="nv">$USER</span>
+</span></span><span class="line"><span class="cl"><span class="nb">logout</span> <span class="p">&amp;</span> login ssh
+</span></span></code></pre></div></li>
+</ol>
+<h2 id="3--install-docker-compose-v2">3. 📦 Install Docker Compose v2</h2>
+<ol>
+<li>
+<p>Create the directory for Docker CLI plugins:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo mkdir -p /usr/local/lib/docker/cli-plugins
+</span></span></code></pre></div></li>
+<li>
+<p>Download Docker Compose v2:</p>
+<ul>
+<li><strong>For x86 device</strong>:
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo curl -SL https://github.com/docker/compose/releases/download/v2.12.2/docker-compose-linux-x86_64 -o /usr/local/lib/docker/cli-plugins/docker-compose
+</span></span></code></pre></div></li>
+<li><strong>For ARM device</strong>:
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo curl -SL https://github.com/docker/compose/releases/download/v2.12.2/docker-compose-linux-aarch64 -o /usr/local/lib/docker/cli-plugins/docker-compose
+</span></span></code></pre></div></li>
+</ul>
+</li>
+<li>
+<p>Make it executable:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo chmod +x /usr/local/lib/docker/cli-plugins/docker-compose
+</span></span></code></pre></div></li>
+<li>
+<p>Verify installation:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker compose version
+</span></span></code></pre></div></li>
+</ol>
+<h2 id="4--add-a-new-user-and-assign-to-sudo-and-docker-groups">4. 👤 Add a New User and Assign to <code>sudo</code> and <code>docker</code> Groups</h2>
+<ol>
+<li>
+<p>Add a new user:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo adduser new_username
+</span></span></code></pre></div><p>Follow the prompts to set the user&rsquo;s password and other details.</p>
+</li>
+<li>
+<p>Add the user to the <code>sudo</code> group:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo usermod -aG sudo new_username
+</span></span></code></pre></div></li>
+<li>
+<p>Add the user to the <code>docker</code> group:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo usermod -aG docker new_username
+</span></span></code></pre></div></li>
+<li>
+<p>Check user groups to confirm:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">id new_username
+</span></span></code></pre></div></li>
+</ol>
+<h2 id="5--mount-hard-disk-in-armbian">5. 💾 Mount Hard Disk in Armbian</h2>
+<ol>
+<li>
+<p>Check hard disk:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">lsblk
+</span></span><span class="line"><span class="cl">sudo blkid
+</span></span></code></pre></div></li>
+<li>
+<p>Mount hard disk:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo mkdir /mnt/wd
+</span></span><span class="line"><span class="cl">sudo chown -hR <span class="k">$(</span>whoami<span class="k">)</span>:<span class="k">$(</span>whoami<span class="k">)</span> /mnt/wd
+</span></span></code></pre></div></li>
+<li>
+<p>Edit <code>/etc/fstab</code> to auto-mount on boot:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo blkid
+</span></span><span class="line"><span class="cl">sudo nano /etc/fstab
+</span></span></code></pre></div><p>Add:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-plaintext" data-lang="plaintext"><span class="line"><span class="cl">UUID=&#34;ID From blkid&#34; /mnt/wd ext4 rw,user,auto 0 0
+</span></span></code></pre></div></li>
+<li>
+<p>Reboot:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo reboot
+</span></span></code></pre></div></li>
+</ol>
+<h2 id="6--set-up-samba-shares">6. 🗂️ Set up Samba Shares</h2>
+<ol>
+<li>
+<p>Install Samba:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo apt-get install samba samba-common-bin
+</span></span></code></pre></div></li>
+<li>
+<p>Edit Samba configuration:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo nano /etc/samba/smb.conf
+</span></span></code></pre></div><p>Add:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-plaintext" data-lang="plaintext"><span class="line"><span class="cl">[mynas]
+</span></span><span class="line"><span class="cl">comment = Samba on My NAS
+</span></span><span class="line"><span class="cl">path = /mnt/wd
+</span></span><span class="line"><span class="cl">read only = no
+</span></span><span class="line"><span class="cl">browsable = yes
+</span></span></code></pre></div></li>
+<li>
+<p>Create shared directory:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo mkdir -p /mnt/wd
+</span></span><span class="line"><span class="cl">sudo chown nobody:nogroup /mnt/wd
+</span></span><span class="line"><span class="cl">sudo chmod <span class="m">0775</span> /mnt/wd
+</span></span></code></pre></div></li>
+<li>
+<p>Add Samba user:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo smbpasswd -a <span class="k">$(</span>whoami<span class="k">)</span>
+</span></span><span class="line"><span class="cl">sudo smbpasswd -a anotheruser
+</span></span></code></pre></div></li>
+<li>
+<p>Restart Samba:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo service smbd restart
+</span></span></code></pre></div></li>
+<li>
+<p>Connect to the share:</p>
+<ul>
+<li>From Windows: <code>\\IP address of NAS</code></li>
+<li>From Linux: <code>smb://IP address of NAS</code></li>
+</ul>
+</li>
+<li>
+<p>If you are unable to access from Windows, try rebooting your Windows machine and test again.</p>
+</li>
+<li>
+<p>Verify Samba status:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo systemctl status smbd
+</span></span></code></pre></div></li>
+<li>
+<p>Troubleshooting:</p>
+<ul>
+<li>Ensure firewall allows SMB traffic.</li>
+<li>Verify SELinux or AppArmor settings.</li>
+<li>Check user permissions and passwords.</li>
+<li>Look at logs in <code>/var/log/samba/</code>.</li>
+</ul>
+</li>
+</ol>
+<h2 id="7--view-linux-machines-from-a-windows-10-network">7. 🌐 View Linux Machines from a Windows 10 Network</h2>
+<ol>
+<li>
+<p>Install WSD on Ubuntu:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">cd</span> /tmp
+</span></span><span class="line"><span class="cl">wget https://github.com/christgau/wsdd/archive/master.zip
+</span></span><span class="line"><span class="cl">unzip master.zip
+</span></span><span class="line"><span class="cl">sudo mv wsdd-master/src/wsdd.py wsdd-master/src/wsdd
+</span></span><span class="line"><span class="cl">sudo cp wsdd-master/src/wsdd /usr/bin
+</span></span><span class="line"><span class="cl">sudo cp wsdd-master/etc/systemd/wsdd.service /etc/systemd/system
+</span></span><span class="line"><span class="cl">sudo nano /etc/systemd/system/wsdd.service
+</span></span></code></pre></div><p>Comment out:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-plaintext" data-lang="plaintext"><span class="line"><span class="cl">; User=nobody
+</span></span><span class="line"><span class="cl">; Group=nobody
+</span></span></code></pre></div></li>
+<li>
+<p>Reload daemon and start WSDD:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo systemctl daemon-reload
+</span></span><span class="line"><span class="cl">sudo systemctl start wsdd
+</span></span><span class="line"><span class="cl">sudo systemctl <span class="nb">enable</span> wsdd
+</span></span></code></pre></div></li>
+<li>
+<p>Check service status:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo service wsdd status
+</span></span></code></pre></div></li>
+<li>
+<p>Reboot Windows and Ubuntu machines if necessary.</p>
+</li>
+</ol>
+<h2 id="8--disable-zram-optional">8. ❌ Disable ZRAM (Optional)</h2>
+<ol>
+<li>
+<p>Edit configuration:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo vim /etc/default/armbian-zram-config
+</span></span></code></pre></div><p>Uncomment:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-plaintext" data-lang="plaintext"><span class="line"><span class="cl">SWAP=false
+</span></span></code></pre></div></li>
+<li>
+<p>Reboot:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo reboot
+</span></span></code></pre></div></li>
+</ol>
+<h2 id="9--mount-raid-0-on-debian">9. ⚙️ Mount RAID 0 on Debian</h2>
+<ol>
+<li>
+<p>Install <code>mdadm</code>:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo apt-get update
+</span></span><span class="line"><span class="cl">sudo apt-get install mdadm
+</span></span></code></pre></div></li>
+<li>
+<p>Assemble RAID array:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo mdadm --assemble --scan
+</span></span></code></pre></div></li>
+<li>
+<p>Verify RAID array:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">cat /proc/mdstat
+</span></span></code></pre></div></li>
+<li>
+<p>Mount RAID array:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo mkdir -p /mnt/raid0
+</span></span><span class="line"><span class="cl">sudo mount /dev/md0 /mnt/raid0
+</span></span></code></pre></div></li>
+<li>
+<p>Verify mount:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">df -h
+</span></span><span class="line"><span class="cl">lsblk
+</span></span></code></pre></div></li>
+<li>
+<p>Auto-mount on boot:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo blkid /dev/md0
+</span></span><span class="line"><span class="cl">sudo nano /etc/fstab
+</span></span></code></pre></div><p>Add:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-plaintext" data-lang="plaintext"><span class="line"><span class="cl">UUID=your-raid-uuid /mnt/raid0 ext4 defaults 0 0
+</span></span></code></pre></div><p>Replace <code>your-raid-uuid</code> with UUID from <code>blkid</code> command.</p>
+</li>
+</ol>
+<p>🎉 Your server is now set up and ready to use! Enjoy!</p>
+</div><div class="post-footer" id="post-footer">
+  <div class="post-info">
+    <div class="post-info-line">
+      <div class="post-info-mod">
+        <span title=2022-05-13&#32;01:11:58>Updated on 13-05-2022</span>
+      </div>
+      <div class="post-info-license"></div>
+    </div>
+    <div class="post-info-line">
+      <div class="post-info-md"></div>
+      <div class="post-info-share">
+        <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://example.org/posts/linux-nas-samba/" data-title="Armbian linux as nas" data-hashtags="linux,samba,nas,docker"><i class="fab fa-twitter fa-fw"></i></a>
+  <a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://example.org/posts/linux-nas-samba/" data-hashtag="linux"><i class="fab fa-facebook-square fa-fw"></i></a>
+  <a href="javascript:void(0);" title="Share on WhatsApp" data-sharer="whatsapp" data-url="http://example.org/posts/linux-nas-samba/" data-title="Armbian linux as nas" data-web><i class="fab fa-whatsapp fa-fw"></i></a>
+  <a href="javascript:void(0);" title="Share on Pinterest" data-sharer="pinterest" data-url="http://example.org/posts/linux-nas-samba/" data-description="hello,it me eric"><i class="fab fa-pinterest fa-fw"></i></a>
+  <a href="javascript:void(0);" title="Share on Tumblr" data-sharer="tumblr" data-url="http://example.org/posts/linux-nas-samba/" data-title="Armbian linux as nas" data-caption="hello,it me eric" data-tags="linux,samba,nas,docker"><i class="fab fa-tumblr fa-fw"></i></a>
+  <a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://example.org/posts/linux-nas-samba/" data-title="Armbian linux as nas"><i data-svg-src="/lib/simple-icons/icons/line.min.svg"></i></a>
+  <a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://example.org/posts/linux-nas-samba/" data-title="Armbian linux as nas"><i class="fab fa-weibo fa-fw"></i></a>
+  <a href="javascript:void(0);" title="Share on Myspace" data-sharer="myspace" data-url="http://example.org/posts/linux-nas-samba/" data-title="Armbian linux as nas" data-description="hello,it me eric"><i data-svg-src="/lib/simple-icons/icons/myspace.min.svg"></i></a>
+  <a href="javascript:void(0);" title="Share on Blogger" data-sharer="blogger" data-url="http://example.org/posts/linux-nas-samba/" data-title="Armbian linux as nas" data-description="hello,it me eric"><i class="fab fa-blogger fa-fw"></i></a>
+  <a href="javascript:void(0);" title="Share on Evernote" data-sharer="evernote" data-url="http://example.org/posts/linux-nas-samba/" data-title="Armbian linux as nas"><i class="fab fa-evernote fa-fw"></i></a>
+  </span>
+      </div>
+    </div>
+  </div>
+
+  <div class="post-info-more">
+    <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/linux/">linux</a>,&nbsp;<a href="/tags/samba/">samba</a>,&nbsp;<a href="/tags/nas/">nas</a>,&nbsp;<a href="/tags/docker/">docker</a></section>
+    <section>
+      <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+    </section>
+  </div>
+
+  <div class="post-nav"><a href="/posts/speculation-principle/" class="prev" rel="prev" title="Speculation Principle"><i class="fas fa-angle-left fa-fw"></i>Speculation Principle</a>
+      <a href="/posts/samadhi-part-1-maya-the-illusion-of-the-self/" class="next" rel="next" title="三摩地影片第1部 - “幻象，自我的迷失">三摩地影片第1部 - “幻象，自我的迷失<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id="comments"><div id="disqus_thread" class="comment"></div><noscript>
+        Please enable JavaScript to view the comments powered by <a href="https://disqus.com/?ref_noscript" rel="external nofollow noopener noreffer">Disqus</a>.
+      </noscript></div></article></main><footer class="footer">
+    <div class="footer-container"><div class="footer-line powered">Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer" title="Hugo 0.117.0">Hugo</a> | Theme - <a href="https://github.com/Lruihao/FixIt" target="_blank" rel="external nofollow noopener noreffer" title="FixIt v0.2.14-RC"><img class="fixit-icon" src="/images/fixit.svg" alt="FixIt logo" />&nbsp;FixIt</a>
+        </div><div class="footer-line copyright"><i class="far fa-copyright fa-fw"></i>
+            <span itemprop="copyrightYear">2019 - 2024</span><span class="author" itemprop="copyrightHolder">
+              <a
+  href="/"
+  
+  
+  
+  
+  
+  
+></a></span><span class="license footer-divider"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div><div class="footer-line statistics"></div></div>
+  </footer></div><div class="widgets">
+  <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+      <i class="fas fa-arrow-up fa-fw"></i>
+    </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+      <i class="fas fa-comment fa-fw"></i>
+    </a>
+  </div><div id="mask"></div>
+</div><script type="text/javascript" src="https://ericvlog.disqus.com/embed.js" defer></script><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js" defer></script><script type="text/javascript" src="/lib/lunr/lunr.min.js" defer></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js" async defer></script><script type="text/javascript" src="/lib/sharer/sharer.min.js" async defer></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","editLockTitle":"Lock editable code block","editUnLockTitle":"Unlock editable code block","editable":true,"maxShownLines":10},"comment":{},"enablePWA":true,"search":{"highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30}};</script><script type="text/javascript" src="/js/theme.min.js" defer></script></body>
+</html>

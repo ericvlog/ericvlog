@@ -43,7 +43,7 @@ Here's how you can set up a `systemd` service to automatically start an `rclone`
 
 ### Step-by-Step Guide to Create a `systemd` Service for `rclone mount`
 
-1. **Create the Service File 📄:**
+1. **Create the Service File 📄:**ddd
    Create a new service file in the `/etc/systemd/system/` directory. You can name the file `rclone-mount.service`.
 
    ```sh

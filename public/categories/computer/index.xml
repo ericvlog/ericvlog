@@ -1,0 +1,23 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>computer - Category - Eric vlog</title>
+    <link>http://example.org/categories/computer/</link>
+    <description>computer - Category - Eric vlog</description>
+    <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Fri, 13 May 2022 01:11:58 &#43;0800</lastBuildDate><atom:link href="http://example.org/categories/computer/" rel="self" type="application/rss+xml" /><item>
+  <title>Armbian linux as nas</title>
+  <link>http://example.org/posts/linux-nas-samba/</link>
+  <pubDate>Fri, 13 May 2022 01:11:58 &#43;0800</pubDate>
+  <author>eric</author>
+  <guid>http://example.org/posts/linux-nas-samba/</guid>
+  <description><![CDATA[🚀 Step-by-Step Guide for Setting Up Your Debian Server 1. Install sudo Command Switch to root user: su - Install sudo: apt-get install sudo Add user to sudo groups: usermod -aG sudo username Check user groups: id username Logout and login SSH again. 2. 🐋 Install Docker &amp; Portainer 2.0 on Debian-Based Distros Install Docker:
+sudo apt install docker.io sudo systemctl start docker Download and run Portainer 2.0:
+sudo docker pull portainer/portainer-ce sudo docker run --restart=always --name=portainer -d -p 9000:9000 -v /var/run/docker.]]></description>
+</item><item>
+  <title>Tubesync and Postgresql Guide</title>
+  <link>http://example.org/posts/tubesync-and-postgresql-guide/</link>
+  <pubDate>Thu, 12 May 2022 22:21:50 &#43;0800</pubDate>
+  <author>Eric</author>
+  <guid>http://example.org/posts/tubesync-and-postgresql-guide/</guid>
+  <description><![CDATA[]]></description>
+</item></channel>
+</rss>

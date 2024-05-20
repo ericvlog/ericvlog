@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+    <meta name="robots" content="noodp" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+    <title>Tubesync and Postgresql Guide - Eric vlog</title><meta name="author" content=": ">
+<meta name="description" content="Eric blog" />
+<meta name="keywords" content="Tubesync,youtube,playlists" /><meta itemprop="name" content="Tubesync and Postgresql Guide">
+<meta itemprop="description" content=""><meta itemprop="datePublished" content="2022-05-12T22:21:50+08:00" />
+<meta itemprop="dateModified" content="2022-05-12T22:21:50+08:00" />
+<meta itemprop="wordCount" content="277"><meta itemprop="image" content="http://example.org/logo.png"/>
+<meta itemprop="keywords" content="youtube,tubesync,postgre,database," /><meta property="og:title" content="Tubesync and Postgresql Guide" />
+<meta property="og:description" content="" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/tubesync-and-postgresql-guide/" /><meta property="og:image" content="http://example.org/logo.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-05-12T22:21:50+08:00" />
+<meta property="article:modified_time" content="2022-05-12T22:21:50+08:00" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="http://example.org/logo.png"/>
+
+<meta name="twitter:title" content="Tubesync and Postgresql Guide"/>
+<meta name="twitter:description" content=""/>
+<meta name="application-name" content="Eric vlog">
+<meta name="apple-mobile-web-app-title" content="Eric vlog"><meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff"><meta name="theme-color" media="(prefers-color-scheme: dark)" content="#252627"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://example.org/posts/tubesync-and-postgresql-guide/" /><link rel="prev" href="http://example.org/posts/wang-yang-ming/" /><link rel="next" href="http://example.org/posts/speculation-principle/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Tubesync and Postgresql Guide",
+    "inLanguage": "en",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "http:\/\/example.org\/posts\/tubesync-and-postgresql-guide\/"
+    },"genre": "posts","keywords": "youtube, tubesync, postgre, database","wordcount":  277 ,
+    "url": "http:\/\/example.org\/posts\/tubesync-and-postgresql-guide\/","datePublished": "2022-05-12T22:21:50+08:00","dateModified": "2022-05-12T22:21:50+08:00","publisher": {
+      "@type": "Organization",
+      "name": ""},"author": {
+        "@type": "Person",
+        "name": "Eric"
+      },"description": ""
+  }
+  </script></head>
+  <body header-desktop="sticky" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script><div class="wrapper"><header class="desktop" id="header-desktop">
+  <div class="header-wrapper">
+    <div class="header-title">
+      <a href="/" title="Eric vlog"><span class="header-title-text">ωєℓ¢σмє тσ му вℓσg</span></a></div>
+    <nav>
+      <ul class="menu"><li
+              class="menu-item"
+              
+            >
+              <a
+                class="menu-link"
+                href="/posts/"
+                
+                
+              >Posts</a></li><li
+              class="menu-item"
+              
+            >
+              <a
+                class="menu-link"
+                href="/tags/"
+                
+                
+              >Tags</a></li><li
+              class="menu-item"
+              
+            >
+              <a
+                class="menu-link"
+                href="/categories/"
+                
+                
+              >Categories</a></li><li class="menu-item delimiter"></li><li class="menu-item search" id="search-desktop">
+            <input type="text" placeholder="Search titles or contents ..." id="search-input-desktop">
+            <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+              <i class="fas fa-search fa-fw"></i>
+            </a>
+            <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+              <i class="fas fa-times-circle fa-fw"></i>
+            </a>
+            <span class="search-button search-loading" id="search-loading-desktop">
+              <i class="fas fa-spinner fa-fw fa-spin"></i>
+            </span>
+          </li><li class="menu-item theme-switch" title="Switch Theme">
+          <i class="fas fa-adjust fa-fw"></i>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header><header class="mobile" id="header-mobile">
+  <div class="header-container">
+    <div class="header-wrapper">
+      <div class="header-title">
+        <a href="/" title="Eric vlog"><span class="header-title-text">ωєℓ¢σмє тσ му вℓσg</span></a></div>
+      <div class="menu-toggle" id="menu-toggle-mobile">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+    <nav>
+      <ul class="menu" id="menu-mobile"><li class="search-wrapper">
+            <div class="search mobile" id="search-mobile">
+              <input type="text" placeholder="Search titles or contents ..." id="search-input-mobile">
+              <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                <i class="fas fa-search fa-fw"></i>
+              </a>
+              <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                <i class="fas fa-times-circle fa-fw"></i>
+              </a>
+              <span class="search-button search-loading" id="search-loading-mobile">
+                <i class="fas fa-spinner fa-fw fa-spin"></i>
+              </span>
+            </div>
+            <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+              Cancel
+            </a>
+          </li><li
+              class="menu-item"
+            ><a
+                class="menu-link"
+                href="/posts/"
+                
+                
+              >Posts</a></li><li
+              class="menu-item"
+            ><a
+                class="menu-link"
+                href="/tags/"
+                
+                
+              >Tags</a></li><li
+              class="menu-item"
+            ><a
+                class="menu-link"
+                href="/categories/"
+                
+                
+              >Categories</a></li><li class="menu-item theme-switch" title="Switch Theme">
+          <i class="fas fa-adjust fa-fw"></i>
+        </li></ul>
+    </nav>
+  </div>
+</header>
+<div class="search-dropdown desktop">
+  <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+  <div id="search-dropdown-mobile"></div>
+</div>
+<main class="container" page-style="normal"><aside class="toc" id="toc-auto"><h2 class="toc-title">Contents</h2>
+      <div class="toc-content" id="toc-content-auto"></div></aside>
+
+  <aside class="aside-custom">
+    
+  </aside>
+
+  <article class="page single"><h1 class="single-title animate__animated animate__flipInX">Tubesync and Postgresql Guide</h1><h2 class="single-subtitle">Tubesync is a software run automatic check and download video from youtube playlists</h2><div class="post-meta">
+      <div class="post-meta-line"><span class="post-author"><span class="author"><i class="fas fa-user-circle"></i>
+      Eric</span></span>
+          <span class="post-category">included in <a href="/categories/computer/"><i class="far fa-folder fa-fw"></i>&nbsp;computer</a></span></div>
+      <div class="post-meta-line"><span title=2022-05-12&#32;22:21:50>
+            <i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="12-05-2022" >12-05-2022</time>
+          </span>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;277 words&nbsp;
+        <i class="far fa-clock fa-fw"></i>&nbsp;2 minutes&nbsp;</div>
+    </div><div class="details toc" id="toc-static" kept="false">
+        <div class="details-summary toc-title">
+          <span>Contents</span>
+          <span><i class="details-icon fas fa-angle-right"></i></span>
+        </div>
+        <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#tubesync-is-a-pvr-personal-video-recorder-for-youtube">TubeSync is a PVR (personal video recorder) for YouTube</a>
+      <ul>
+        <li><a href="#docker-compose-example-for-tubesync-with-postgresql">Docker compose example for tubesync with postgresql.</a></li>
+        <li><a href="#permission-issue-with-postgresql-in-docker-container">Permission issue with PostgreSQL in docker container</a></li>
+      </ul>
+    </li>
+    <li><a href="#create-postgresql-database-for-tubesync">Create postgresql database for tubesync</a></li>
+  </ul>
+</nav></div>
+      </div><div class="content" id="content"><h2 id="tubesync-is-a-pvr-personal-video-recorder-for-youtube">TubeSync is a PVR (personal video recorder) for YouTube</h2>
+<h3 id="docker-compose-example-for-tubesync-with-postgresql">Docker compose example for tubesync with postgresql.</h3>
+<p>This is my personal enviroment compose file.</p>
+<pre tabindex="0"><code>version: &#34;3.7&#34;
+services:
+  tubesync:
+    image: ghcr.io/meeb/tubesync:latest
+    container_name: tubesync
+    restart: unless-stopped
+    networks:
+      - default
+    ports:
+      - 4848:4848
+    volumes:
+      - /srv/dev-disk-by-uuid-07a04a45-40a9-4876-a086-7cf85beb3688/data/setting/tubesync:/config #edit your own path of config
+      - /srv/dev-disk-by-uuid-07a04a45-40a9-4876-a086-7cf85beb3688/data/youtube_downloads:/downloads #where location of your download folder
+    environment:
+      - TZ=Asia/Kuala_Lumpur
+      - PUID=1000
+      - PGID=100
+      - UMASK=022
+      - DATABASE_CONNECTION=postgresql://tubeuser:tubepassword@db:5432/tubedb #keyin your own user:password and last is database name.
+
+
+  db:
+    environment:
+     POSTGRES_USER: tubeuser
+     POSTGRES_PASSWORD: tubepassword
+     POSTGRES_DB: tubedb
+      - TZ=Asia/Kuala_Lumpur
+    image: postgres:latest
+    user: 1000:100
+    networks:
+      - default
+    ports:
+      - 5432:5432
+    restart: always
+    volumes:
+      - /srv/dev-disk-by-uuid-07a04a45-40a9-4876-a086-7cf85beb3688/data/setting/postgresql:/var/lib/postgresql/data
+</code></pre><h3 id="permission-issue-with-postgresql-in-docker-container">Permission issue with PostgreSQL in docker container</h3>
+<ol>
+<li>start the container using your normal docker-compose file, this creates the directory with the hardcoded uid:gid (999:999)</li>
+</ol>
+<pre tabindex="0"><code>version:&#39;3.7&#39;
+services:
+  db:
+    image: postgres
+    container_name: postgres
+    volumes:
+      - ./data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: fake_database_user
+      POSTGRES_PASSWORD: fake_database_PASSWORD
+</code></pre><p>stop the container and manually change the ownership to uid:gid you want (I&rsquo;ll use 1000:1000 for this example</p>
+<p><code>docker stop postgres</code>
+<code>sudo chown -R 1000:1000 ./data </code></p>
+<p>Edit your docker file to add your desired uid:gid and start it up again using docker-compose (notice the user:)</p>
+<pre tabindex="0"><code>version: &#39;3.7&#39;
+
+services:
+  db:
+    image: postgres
+    container_name: postgres
+    volumes:
+      - ./data:/var/lib/postgresql/data
+    user: 1000:1000
+    environment:
+      POSTGRES_USER: fake_database_user
+      POSTGRES_PASSWORD: fake_database_password
+</code></pre><p>The reason you can&rsquo;t just use user: from the start is that if the image runs as a different user it fails to create the data files.</p>
+<h2 id="create-postgresql-database-for-tubesync">Create postgresql database for tubesync</h2>
+<p>command shell into tubesync container
+<code>docker exec -ti tubesync /bin/bash</code></p>
+<p>Create database with below command
+<code>createdb -h localhost -p 5432 -U username databasename</code></p>
+<p>Test your new database.
+<code>psql -h localhost -U user -W databasename</code>  #user =keyin your user and your database name</p></div><div class="post-footer" id="post-footer">
+  <div class="post-info">
+    <div class="post-info-line">
+      <div class="post-info-mod">
+        <span title=2022-05-12&#32;22:21:50>Updated on 12-05-2022</span>
+      </div>
+      <div class="post-info-license"></div>
+    </div>
+    <div class="post-info-line">
+      <div class="post-info-md"></div>
+      <div class="post-info-share">
+        <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://example.org/posts/tubesync-and-postgresql-guide/" data-title="Tubesync and Postgresql Guide" data-hashtags="youtube,tubesync,postgre,database"><i class="fab fa-twitter fa-fw"></i></a>
+  <a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://example.org/posts/tubesync-and-postgresql-guide/" data-hashtag="youtube"><i class="fab fa-facebook-square fa-fw"></i></a>
+  <a href="javascript:void(0);" title="Share on WhatsApp" data-sharer="whatsapp" data-url="http://example.org/posts/tubesync-and-postgresql-guide/" data-title="Tubesync and Postgresql Guide" data-web><i class="fab fa-whatsapp fa-fw"></i></a>
+  <a href="javascript:void(0);" title="Share on Pinterest" data-sharer="pinterest" data-url="http://example.org/posts/tubesync-and-postgresql-guide/"><i class="fab fa-pinterest fa-fw"></i></a>
+  <a href="javascript:void(0);" title="Share on Tumblr" data-sharer="tumblr" data-url="http://example.org/posts/tubesync-and-postgresql-guide/" data-title="Tubesync and Postgresql Guide" data-tags="youtube,tubesync,postgre,database"><i class="fab fa-tumblr fa-fw"></i></a>
+  <a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://example.org/posts/tubesync-and-postgresql-guide/" data-title="Tubesync and Postgresql Guide"><i data-svg-src="/lib/simple-icons/icons/line.min.svg"></i></a>
+  <a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://example.org/posts/tubesync-and-postgresql-guide/" data-title="Tubesync and Postgresql Guide"><i class="fab fa-weibo fa-fw"></i></a>
+  <a href="javascript:void(0);" title="Share on Myspace" data-sharer="myspace" data-url="http://example.org/posts/tubesync-and-postgresql-guide/" data-title="Tubesync and Postgresql Guide" data-description=""><i data-svg-src="/lib/simple-icons/icons/myspace.min.svg"></i></a>
+  <a href="javascript:void(0);" title="Share on Blogger" data-sharer="blogger" data-url="http://example.org/posts/tubesync-and-postgresql-guide/" data-title="Tubesync and Postgresql Guide" data-description=""><i class="fab fa-blogger fa-fw"></i></a>
+  <a href="javascript:void(0);" title="Share on Evernote" data-sharer="evernote" data-url="http://example.org/posts/tubesync-and-postgresql-guide/" data-title="Tubesync and Postgresql Guide"><i class="fab fa-evernote fa-fw"></i></a>
+  </span>
+      </div>
+    </div>
+  </div>
+
+  <div class="post-info-more">
+    <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/youtube/">youtube</a>,&nbsp;<a href="/tags/tubesync/">tubesync</a>,&nbsp;<a href="/tags/postgre/">postgre</a>,&nbsp;<a href="/tags/database/">database</a></section>
+    <section>
+      <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+    </section>
+  </div>
+
+  <div class="post-nav"><a href="/posts/wang-yang-ming/" class="prev" rel="prev" title="王阳明的知行合一"><i class="fas fa-angle-left fa-fw"></i>王阳明的知行合一</a>
+      <a href="/posts/speculation-principle/" class="next" rel="next" title="Speculation Principle">Speculation Principle<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id="comments"><div id="disqus_thread" class="comment"></div><noscript>
+        Please enable JavaScript to view the comments powered by <a href="https://disqus.com/?ref_noscript" rel="external nofollow noopener noreffer">Disqus</a>.
+      </noscript></div></article></main><footer class="footer">
+    <div class="footer-container"><div class="footer-line powered">Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer" title="Hugo 0.117.0">Hugo</a> | Theme - <a href="https://github.com/Lruihao/FixIt" target="_blank" rel="external nofollow noopener noreffer" title="FixIt v0.2.14-RC"><img class="fixit-icon" src="/images/fixit.svg" alt="FixIt logo" />&nbsp;FixIt</a>
+        </div><div class="footer-line copyright"><i class="far fa-copyright fa-fw"></i>
+            <span itemprop="copyrightYear">2019 - 2024</span><span class="author" itemprop="copyrightHolder">
+              <a
+  href="/"
+  
+  
+  
+  
+  
+  
+></a></span><span class="license footer-divider"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div><div class="footer-line statistics"></div></div>
+  </footer></div><div class="widgets">
+  <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+      <i class="fas fa-arrow-up fa-fw"></i>
+    </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+      <i class="fas fa-comment fa-fw"></i>
+    </a>
+  </div><div id="mask"></div>
+</div><script type="text/javascript" src="https://ericvlog.disqus.com/embed.js" defer></script><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js" defer></script><script type="text/javascript" src="/lib/lunr/lunr.min.js" defer></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js" async defer></script><script type="text/javascript" src="/lib/sharer/sharer.min.js" async defer></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","editLockTitle":"Lock editable code block","editUnLockTitle":"Unlock editable code block","editable":true,"maxShownLines":10},"comment":{},"enablePWA":true,"search":{"highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30}};</script><script type="text/javascript" src="/js/theme.min.js" defer></script></body>
+</html>
