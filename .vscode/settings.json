@@ -2,9 +2,17 @@
     "editor.codeActionsOnSave": {
         "source.fixAll": true
     },
-    "files.autoSave": "afterDelay",
+    "files.autoSave": "off",
     "files.autoSaveDelay": 1000,
-    "editor.formatOnSave": false
+    "editor.formatOnSave": false,
+    "spellright.language": [
+        "en"
+    ],
+    "spellright.documentTypes": [
+        "latex",
+        "plaintext",
+        "markdown"
+    ]
 }
 
 

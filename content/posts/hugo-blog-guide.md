@@ -1,13 +1,13 @@
 ---
-title: "Hugo Blog on github guide"
+title: "Hugo Blog on GitHub guide"
 subtitle: "Hugo complete setup guide"
 date: 2024-05-18T18:06:04+08:00
 draft: false
 author: "Eric"
 authorLink: ""
 authorEmail: "plsharevme@gmail.com"
-description: "Step by step setup hugo blog system on github"
-keywords: "hugo,github,blog"
+description: "Step by step setup hugo blog system on GitHub"
+keywords: "Hugo,GitHub,blog"
 license: ""
 comment: true
 weight: 0
@@ -15,7 +15,7 @@ weight: 0
 tags:
 - blog
 - hugo
-- github
+- GitHub
 categories:
 - blog
 
