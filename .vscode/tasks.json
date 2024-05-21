@@ -13,29 +13,42 @@
                 "kind": "build",
                 "isDefault": false
             },
-            "problemMatcher": [],
-            "detail": "Task for building the Hugo site with output directory ../ericvlog_site."
+            "problemMatcher": []
         },
         {
-            "label": "Commit and Push to GitHub",
+            "label": "Commit and Push ericvlog_site to GitHub",
             "type": "shell",
             "command": "powershell.exe",
             "args": [
                 "-Command",
-                "\"cd C:/Users/plsharevme/ericvlog_site; git add .; git commit -m 'Auto-commit from build task'; git push origin main; cd ../ericvlog; git add .; git commit -m 'Auto-commit from build task'; git push origin main\""
+                "cd C:/Users/plsharevme/ericvlog_site; git add .; git commit -m 'Auto-commit from build task'; git push origin main"
             ],
             "problemMatcher": [],
             "group": {
                 "kind": "build",
                 "isDefault": false
-            },
-            "detail": "Task for committing and pushing changes to GitHub."
+            }
+        },
+        {
+            "label": "Commit and Push ericvlog to GitHub",
+            "type": "shell",
+            "command": "powershell.exe",
+            "args": [
+                "-Command",
+                "cd C:/Users/plsharevme/ericvlog; git add .; git commit -m 'Auto-commit from build task'; git push origin main"
+            ],
+            "problemMatcher": [],
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            }
         },
         {
             "label": "Build and Deploy",
             "dependsOn": [
                 "Build Hugo Site to ericvlog_site",
-                "Commit and Push to GitHub"
+                "Commit and Push ericvlog_site to GitHub",
+                "Commit and Push ericvlog to GitHub"
             ],
             "problemMatcher": [],
             "group": {
