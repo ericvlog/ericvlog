@@ -17,41 +17,25 @@
             "detail": "Task for building the Hugo site with output directory ../ericvlog_site."
         },
         {
-            "label": "Commit and Push ericvlog_site to GitHub",
+            "label": "Commit and Push to GitHub",
             "type": "shell",
-            "command": "cmd",
+            "command": "powershell.exe",
             "args": [
-                "/c",
-                "cd C:/Users/plsharevme/ericvlog_site && git add . && git commit -m 'Auto-commit from VS Code' && git push origin main"
+                "-Command",
+                "\"cd C:/Users/plsharevme/ericvlog_site; git add .; git commit -m 'Auto-commit from build task'; git push origin main; cd ../ericvlog; git add .; git commit -m 'Auto-commit from build task'; git push origin main\""
             ],
             "problemMatcher": [],
             "group": {
                 "kind": "build",
                 "isDefault": false
             },
-            "detail": "Task for committing and pushing changes in ericvlog_site to GitHub."
-        },
-        {
-            "label": "Commit and Push ericvlog to GitHub",
-            "type": "shell",
-            "command": "cmd",
-            "args": [
-                "/c",
-                "cd C:/Users/plsharevme/ericvlog && git add . && git commit -m 'Auto-commit from VS Code' && git push origin main"
-            ],
-            "problemMatcher": [],
-            "group": {
-                "kind": "build",
-                "isDefault": false
-            },
-            "detail": "Task for committing and pushing changes in ericvlog to GitHub."
+            "detail": "Task for committing and pushing changes to GitHub."
         },
         {
             "label": "Build and Deploy",
             "dependsOn": [
                 "Build Hugo Site to ericvlog_site",
-                "Commit and Push ericvlog_site to GitHub",
-                "Commit and Push ericvlog to GitHub"
+                "Commit and Push to GitHub"
             ],
             "problemMatcher": [],
             "group": {
