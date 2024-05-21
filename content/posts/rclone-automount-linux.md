@@ -13,9 +13,12 @@ comment: true
 weight: 0
 
 tags:
-- draft
+- rclone
+- automount
+- debian
+- linux
 categories:
-- draft
+- computer
 
 hiddenFromHomePage: false
 hiddenFromSearch: false
@@ -38,85 +41,97 @@ seo:
 # See details front matter: /theme-documentation-content/#front-matter
 ---
 
-<!--more-->
-test hugo -d
 
-temd` service to automatically start an `rclone` mount on Debian, and how to unmount it when it's no longer needed. This guide includes jjjjdddddddstep-by-step instructions with some emojis to make it more engaging. 📋ffffffffffgggggggdddddddddddddddddddddd
 
-### Step-by-Step Guide to Create a `systemd` Service for `rclone mount`
+## Automatically Mounting rclone Remote Directory on Debian 11
 
-1. **Create the Service File 📄:**ddd
-   Create a new service file in the `/etc/systemd/system/` directory. You can name the file `rclone-mount.service`.
+To automatically mount the remote directory using rclone on system restart in Debian 11, you can create a systemd service unit. Here's how you can do it:
 
-   ```sh
+1. **Create a systemd service unit file**: Open a terminal and create a new service unit file using your favorite text editor. For example:
+
+   ```bash
    sudo nano /etc/systemd/system/rclone-mount.service
    ```
 
-2. **Configure the Service File ⚙️:**
-   Add the following configuration to the service file. Adjust the `ExecStart` command to match your specific `rclone` configuration, and ensure that the paths are correct for your setup.
+2. **Add the following content** to the file:
 
-   ```ini
+   ```plaintext
    [Unit]
-   Description=Mount Rclone Remote
-   AssertPathIsDirectory=/path/to/mount/point
+   Description=RClone Mount Service
    After=network-online.target
 
    [Service]
    Type=simple
-   ExecStart=/usr/bin/rclone mount remote:path /path/to/mount/point --config /path/to/rclone.conf --vfs-cache-mode writes
-   ExecStop=/bin/fusermount -u /path/to/mount/point
+   User=<YOUR_USERNAME>
+   ExecStart=/usr/bin/rclone mount pikpak: /mnt/data/media/pikpak --vfs-cache-mode writes --allow-non-empty --allow-other
    Restart=always
-   RestartSec=10
+   RestartSec=5
 
    [Install]
    WantedBy=multi-user.target
    ```
 
-   Replace the placeholders with actual values:
-   - `/path/to/mount/point`: The directory where you want to mount the remote storage.
-   - `remote:path`: The rclone remote and path you want to mount.
-   - `/path/to/rclone.conf`: The path to your rclone configuration file.
+   Replace `<YOUR_USERNAME>` with your actual username.
 
-3. **Enable and Start the Service 🚀:**
-   Reload the `systemd` daemon to recognize the new service, then enable and start it.
+3. **Save and close the file**: In Nano, you can do this by pressing `Ctrl + O` to write the file, then `Enter`, and finally `Ctrl + X` to exit.
 
-   ```sh
+4. **Reload systemd**: After saving the service unit file, reload the systemd daemon to ensure it recognizes the new service:
+
+   ```bash
    sudo systemctl daemon-reload
-   sudo systemctl enable rclone-mount
-   sudo systemctl start rclone-mount
    ```
 
-   These commands ensure that the `rclone` mount service starts automatically on boot and runs continuously.
+5. **Enable the service**: You need to enable the service so it starts automatically on system boot:
 
-### Unmounting the Service ⛔️
-
-If you no longer need the `rclone` mount and want to unmount it, you can stop and disable the service. This will stop the mount immediately and prevent it from starting on the next boot.
-
-1. **Stop the Service 🛑:**
-
-   ```sh
-   sudo systemctl stop rclone-mount
+   ```bash
+   sudo systemctl enable rclone-mount.service
    ```
 
-   This command will unmount the rclone mount immediately.
+6. **Start the service**: You can manually start the service now:
 
-2. **Disable the Service 🚫:**
-
-   ```sh
-   sudo systemctl disable rclone-mount
+   ```bash
+   sudo systemctl start rclone-mount.service
    ```
 
-   This command ensures the service will not start automatically on the next boot.
+Now, your remote directory should be mounted automatically on system startup. 🚀
 
-### Removing the Service File 🗑️
+Remember to replace `pikpak:` and `/mnt/data/media/pikpak` with your actual rclone remote and local mount path. Also, make sure rclone is installed in `/usr/bin/rclone` or specify the correct path in the `ExecStart` directive.
 
-If you want to completely remove the service, you can delete the service file after stopping and disabling the service.
+---
 
-```sh
-sudo rm /etc/systemd/system/rclone-mount.service
-sudo systemctl daemon-reload
+**Note**: If your rclone binary is installed in a different location, you'll need to specify the correct path in the `ExecStart` directive of the systemd service unit file.
+
+To find out where rclone is installed on your system, you can use the `which` command:
+
+```bash
+which rclone
 ```
 
-Reloading the `systemd` daemon after removing the file ensures that `systemd` is aware of the changes.
+After making this change, save the file, reload systemd, and restart the service as described in the previous instructions.
 
-By following these steps, you can set up an `rclone` mount to start automatically with `systemd` and easily manage the service, including unmounting it when it's no longer needed【5†source】【6†source】【7†source】.
+---
+
+## Disabling Automatic Mounting
+
+If you no longer want the remote directory to be automatically mounted on system startup, you can remove the systemd service unit that you created earlier. Here's how you can do it:
+
+1. **Disable the service**: First, you should disable the systemd service to prevent it from starting automatically on system boot:
+
+   ```bash
+   sudo systemctl disable rclone-mount.service
+   ```
+
+2. **Stop the service**: Next, stop the running instance of the service:
+
+   ```bash
+   sudo systemctl stop rclone-mount.service
+   ```
+
+3. **Remove the service file**: Finally, you can remove the systemd service unit file that you created:
+
+   ```bash
+   sudo rm /etc/systemd/system/rclone-mount.service
+   ```
+
+After completing these steps, the automatic mounting of the remote directory should be disabled, and the systemd service unit file will be removed from your system. 🛑
+```
