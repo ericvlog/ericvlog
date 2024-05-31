@@ -41,7 +41,11 @@ seo:
 
 # See details front matter: /theme-documentation-content/#front-matter
 ---
-## Example docker compose files
+## Compose with rsshub, freshrss container.
+
+### 1. rsshub + freshrss
+<!--more-->
+
 ```
 version: '3'
 
@@ -114,4 +118,5 @@ It contains rsshub and freshrss.
 `restart npm and use rsshubip:port/route/:id to add rss feeds into freshrss`
 
 
-<!--more-->
+
+
