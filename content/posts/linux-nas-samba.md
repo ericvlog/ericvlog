@@ -270,8 +270,79 @@ seo:
    ```bash
    sudo reboot
    ```
+## Add New Raid to system Debian
 
-## 9. ⚙️ Mount RAID 0 on Debian
+1. Install mdadm
+
+   First, you'll need to install the mdadm package if it's not already installed.
+
+   ```
+   sudo apt update
+   sudo apt install mdadm
+   ```
+
+2. Identify the Disks
+
+   Identify the disks you want to use for the RAID array. You can use lsblk or fdisk -l to list all available disks.
+
+   
+   `lsblk`
+   
+
+   Make a note of the device names **(e.g., /dev/sdb, /dev/sdc, etc.).**
+
+3. Create the RAID Array
+
+   Use mdadm to create the RAID array. The following example creates a RAID 1 array (mirroring) with two disks:
+
+   ```
+   sudo mdadm --create --verbose /dev/md0 --level=1 --raid-devices=2 /dev/sdb /dev/sdc
+   ```
+
+   - /dev/md0 is the RAID device name.
+   - --level=1 specifies the RAID level (RAID 1 in this case).
+   - --raid-devices=2 specifies the number of devices in the array.
+   - /dev/sdb and /dev/sdc are the disks to be used in the RAID array.
+
+4. Create a Filesystem
+
+   Once the RAID array is created, you need to create a filesystem on it. For example, to create an ext4 filesystem:
+   
+   `sudo mkfs.ext4 /dev/md0`
+   
+
+5. Mount the RAID Array
+
+   Create a mount point and mount the RAID array:
+
+   
+   `sudo mkdir -p /mnt/raid`
+   `sudo mount /dev/md0 /mnt/raid`
+   
+
+6. Update /etc/fstab
+
+   To ensure the RAID array is mounted automatically at boot, add an entry to /etc/fstab. First, get the UUID of the RAID array:
+
+   
+   `sudo blkid /dev/md0`
+   
+
+   Add the following line to /etc/fstab, replacing UUID=<your-uuid> with the actual UUID:
+
+   
+   `UUID=<your-uuid> /mnt/raid ext4 defaults 0 0`
+   
+
+7. Verify the RAID Array
+
+   You can check the status of the RAID array using:
+
+   ```
+   sudo mdadm --detail /dev/md0
+   ```
+
+## 10. ⚙️ Mount RAID 0 on Debian
 
 1. Install `mdadm`:
    ```bash
