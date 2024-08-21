@@ -1,7 +1,7 @@
 ---
 title: "Guide to Moving the Default /var/lib/docker to Another Directory on Linux"
 subtitle: ""
-date: 2024-05-31T13:55:50+08:00
+date: 2024-08-22T13:55:50+08:00
 draft: false
 author: "Eric"
 authorLink: ""
