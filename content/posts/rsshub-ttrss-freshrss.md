@@ -16,7 +16,7 @@ tags:
 - rsshub
 - ttrss
 - freshrss
-- rss
+
 categories:
 - computer
 - internet
