@@ -14,7 +14,7 @@ weight: 0
 
 tags:
 - docker
-- relocate
+- compose
 
 categories:
 - computer
