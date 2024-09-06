@@ -1,7 +1,7 @@
 ---
 title: "Adguard Home Dns on Debian Armbian"
 subtitle: ""
-date: 2024-09-06T20:27:24+08:00
+date: 2024-09-05T20:27:24+08:00
 draft: false
 author: "Eric"
 authorLink: ""
