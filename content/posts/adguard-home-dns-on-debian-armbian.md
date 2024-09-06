@@ -77,23 +77,7 @@ seo:
 4. **Save and exit:**  
    Press `CTRL + X`, then `Y`, and hit `Enter`.
 
-### Method 2: Using Network Configuration
-
-#### If using `NetworkManager`:
-
-1. **Open Terminal.**
-2. **Edit network settings:**
-   ```bash
-   nm-connection-editor
-   ```
-3. **Select your connection and click "Edit."**
-4. **Go to "IPv4 Settings."**
-5. **Change "Method" to "Automatic (DHCP) addresses only" or "Manual."**
-6. **In the "DNS servers" field, enter:**
-   ```plaintext
-   192.168.1.5
-   ```
-7. **Save and exit.**
+### Method 2: Using /etc/network/interfaces:
 
 #### If using `/etc/network/interfaces`:
 
@@ -118,16 +102,23 @@ seo:
    ```bash
    sudo nano /etc/docker/daemon.json
    ```
-2. **Add the AdGuard Home IP:**
+2. **Add or modify the following line if you have changed the Docker default folder before:**
    ```json
    {
+     "data-root": "/mnt/docker",
      "dns": ["192.168.1.5"]
    }
    ```
-   If the file already has content, just add the `"dns"` line within the existing JSON structure.
+   - Make sure to include the `"dns"` setting if you want to configure DNS as well.
+   - The `"data-root": "/mnt/docker"` specifies the location where you changed the Docker data directory.
+
 
 3. **Save and exit:**  
    Press `CTRL + X`, then `Y`, and hit `Enter`.
+
+   If docker have 
+
+    
 
 4. **Restart Docker:**
    ```bash
