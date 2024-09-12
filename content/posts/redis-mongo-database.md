@@ -1,5 +1,5 @@
 ---
-title: "Redis Mongo Database"
+title: "How to drop Redis Mongo and postgress Database"
 subtitle: ""
 date: 2024-06-04T16:57:31+08:00
 draft: false
@@ -14,6 +14,7 @@ weight: 0
 
 tags:
 - redis
+- postgress
 - mongo
 - database
 categories:
@@ -189,3 +190,108 @@ After selecting the database, you can list all collections within it:
     db.your-collection-name.drop()
     ```
     Replace `your-colle...
+
+
+# Guide to Manage PostgreSQL Databases in Docker 🐘
+
+This guide will help you list PostgreSQL users and databases, find your database name, and drop a PostgreSQL database within a Docker container.
+
+## Listing PostgreSQL Users and Databases
+
+### Step 1: Access the PostgreSQL Container
+
+To access your running PostgreSQL container, use the following command. Replace `your_container_name` with the actual name or ID of your container.
+
+```bash
+docker exec -it your_container_name bash
+```
+
+### Step 2: Connect to PostgreSQL
+
+Once inside the container, connect to the PostgreSQL database using the `psql` command. Replace `username` with your PostgreSQL username (often `postgres`).
+
+```bash
+psql -U username
+```
+
+### Step 3: List Users
+
+To list all users, execute:
+
+```sql
+\du
+```
+
+### Step 4: List All Databases
+
+To list all databases, use:
+
+```sql
+\l
+```
+
+### Step 5: Find Your Database Name
+
+If you're not sure about your database name, you can check the list of databases using the command above (`\l`). Look for the name in the output.
+
+### Step 6: Exit
+
+To exit the `psql` prompt, type:
+
+```sql
+\q
+```
+
+Then, exit the container:
+
+```bash
+exit
+```
+
+---
+
+## Dropping a PostgreSQL Database 💔
+
+### Step 1: Access the PostgreSQL Container
+
+If you are not already inside the container, access it using the same command as before:
+
+```bash
+docker exec -it your_container_name bash
+```
+
+### Step 2: Connect to PostgreSQL
+
+Connect to PostgreSQL using:
+
+```bash
+psql -U username
+```
+
+### Step 3: Drop the Database
+
+After connecting, you can drop the database by executing the following command. Replace `zilean` with the name of the database you want to drop.
+
+```sql
+DROP DATABASE zilean;
+```
+
+### Step 4: Exit
+
+To exit the `psql` prompt, type:
+
+```sql
+\q
+```
+
+Then, exit the container:
+
+```bash
+exit
+```
+
+---
+
+## Summary 🌟
+
+This guide provided instructions on how to list PostgreSQL users and databases, find your database name, and drop a PostgreSQL database within a Docker container. Ensure you have the necessary permissions and always back up your data before performing destructive operations.
