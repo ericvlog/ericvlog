@@ -15,7 +15,7 @@ weight: 0
 tags:
 - youtube
 - tubesync
-- postgre
+- postgress
 - database
 categories:
 - computer

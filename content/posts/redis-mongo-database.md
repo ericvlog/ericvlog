@@ -6,7 +6,7 @@ draft: false
 author: "Eric"
 authorLink: ""
 authorEmail: "plsharevme@gmail.com"
-description: "redis & mongo "
+description: "How to Drop Databases in Redis, MongoDB, and PostgreSQL with list out all user and database"
 keywords: ""
 license: ""
 comment: true
