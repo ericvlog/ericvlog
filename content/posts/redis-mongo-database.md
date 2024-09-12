@@ -1,5 +1,5 @@
 ---
-title: "How to drop Redis Mongo and postgress Database"
+title: "How to Drop Databases in Redis, MongoDB, and PostgreSQL"
 subtitle: ""
 date: 2024-06-04T16:57:31+08:00
 draft: false
