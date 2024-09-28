@@ -1,5 +1,5 @@
 ---
-title: "Docker Network Management Guide.md"
+title: "Docker Network Management Guide"
 subtitle: "Understanding Docker Networking Basics"
 date: 2024-09-27T13:41:36+08:00
 draft: false
