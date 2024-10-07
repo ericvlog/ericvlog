@@ -260,9 +260,62 @@ DELETE FROM "Show" WHERE _id = 3944;
 - **Backup**: Always ensure you have a backup before performing delete operations.
 - **Cascade Deletion**: Consider setting the foreign key constraint in the `Season` table to `ON DELETE CASCADE` for future deletions.
 
-If you have any further questions or need assistance with the queries, feel free to ask! 😊
+---
+Here’s a more compact version for easy copy and paste:
+
+---
+
+## 🐳 Docker Command entering postgresql.
+
+```bash
+docker exec -it riven-db psql -U postgres
+```
+
+## 📜 SQL Queries
+
+### Media Items Search
+
+```sql
+SELECT _id FROM "MediaItem" WHERE title ILIKE '%Ganbare Doukichan%';
+SELECT * FROM "MediaItem" WHERE title ILIKE '%The Lord of the Rings: The Rings of Power%';
+```
+
+### Check Parent IDs
+
+```sql
+\d "Episode"
+```
+
+## 🔍 Info for Media Item `_id = 1314`
+
+```sql
+SELECT * FROM "Movie" WHERE _id = 1314;
+SELECT * FROM "StreamBlacklistRelation" WHERE media_item_id = 1314;
+SELECT * FROM "StreamRelation" WHERE parent_id = 1314;
+SELECT * FROM "Subtitle" WHERE parent_id = 1314;
+SELECT * FROM "Show" WHERE _id = 1314;
+SELECT * FROM "Season" WHERE parent_id = 1314;
+SELECT * FROM "Season" WHERE _id = 1314;
+SELECT * FROM "Episode" WHERE parent_id = 1314;
+```
+
+## 🗑️ Deleting Records
+
+```sql
+DELETE FROM "Episode" WHERE parent_id IN (SELECT _id FROM "Season" WHERE parent_id = 4156);
+DELETE FROM "Season" WHERE parent_id = 4156;
+DELETE FROM "Show" WHERE _id = 4156;
+DELETE FROM "Subtitle" WHERE parent_id IN (SELECT _id FROM "Season" WHERE parent_id = 4156);
+DELETE FROM "StreamRelation" WHERE parent_id = 4156;
+DELETE FROM "StreamBlacklistRelation" WHERE media_item_id = 4156;
+DELETE FROM "MediaItem" WHERE _id = 4156;
+```
 
 --- 
 
-This guide provides a comprehensive overview of how to manage your TV show data in PostgreSQL, complete with visual cues and easy-to-follow instructions. Let me know if you need any more adjustments!
+You can easily copy and paste this format! 😊
+
+
+
+
 <!--more-->
