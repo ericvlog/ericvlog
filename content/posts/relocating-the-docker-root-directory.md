@@ -115,6 +115,12 @@ To check that everything is working correctly, list your Docker images:
 sudo docker images
 ```
 
+```bash
+docker info | grep "Docker Root Dir"
+```
+
+Use the command above to check if the new location is ready to be applied.
+
 If your images and containers appear as expected, the move was successful!
 
 ## 6. 🗑️ Clean Up the Old Docker Directory
