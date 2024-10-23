@@ -305,6 +305,7 @@ SELECT * FROM "Episode" WHERE parent_id = 1314;
 DELETE FROM "Episode" WHERE parent_id IN (SELECT _id FROM "Season" WHERE parent_id = 4156);
 DELETE FROM "Season" WHERE parent_id = 4156;
 DELETE FROM "Show" WHERE _id = 4156;
+DELETE FROM "Movie" WHERE _id = 3384;
 DELETE FROM "Subtitle" WHERE parent_id IN (SELECT _id FROM "Season" WHERE parent_id = 4156);
 DELETE FROM "StreamRelation" WHERE parent_id = 4156;
 DELETE FROM "StreamBlacklistRelation" WHERE media_item_id = 4156;
