@@ -37,5 +37,5 @@ seo:
 
 # See details front matter: /theme-documentation-content/#front-matter
 ---
-![alt text](../../static/images/BTCUSDT_2025-08-19_19-35-00.png)
+![alt text](/images/BTCUSDT_2025-08-19_19-35-00.png)
 <!--more-->
