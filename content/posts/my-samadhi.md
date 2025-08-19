@@ -1,5 +1,5 @@
 ---
-title: "My Samadhi 🧘"
+title: "My Samadhi 🧘 test"
 subtitle: ""
 date: 2025-01-22T02:53:27+08:00
 draft: false
