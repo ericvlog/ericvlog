@@ -40,6 +40,9 @@ seo:
 # See details front matter: /theme-documentation-content/#front-matter
 ---
 结合自己的指标，分定阴阳和信号指标，信号指标有阿拉丁，三角信号，阴阳可以分裂成，阴阳，阴阴，阳阳，阳阴
+
+![yinyangtu](/images/yinyang.jpg)
+
 <!--more-->
 ## 阴阴
 
