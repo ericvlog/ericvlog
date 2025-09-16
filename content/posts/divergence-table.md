@@ -45,7 +45,7 @@ seo:
 ## 阴阴
 
 ### 阴（啊）阴（啊）
-- <span style="color: blue;">如果之后有标记（阴双，阴三），可以在回调一些时开头寸。</span>
+- <span style="color: blue;">如果之后有标记（阴双，阴三），可以在回调一些时开头寸。</span> :winner
 - <span style="color: blue;">过程出现阿拉丁标记可以直接开仓。</span>
 - <span style="color: red;">过程没什么标记，一直横盘不开头寸。</span>
 

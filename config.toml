@@ -538,6 +538,10 @@ theme = "FixIt"
   [markup.highlight]
     # false is a necessary configuration (https://github.com/Lruihao/FixIt/issues/43)
     noClasses = false
+
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
 	
 
 
