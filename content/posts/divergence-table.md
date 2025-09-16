@@ -51,6 +51,7 @@ seo:
 - <span style="color: red;">过程没什么标记，一直横盘不开头寸。</span>
 ### 阴（三）阴（三）
 - <span style="color: blue;">过程出现阿拉丁标记可以直接开仓。</span>
+- <span style="color: blue;">过程小周期出现阳双或阳三，大周期阴三，阴双都可以开仓。</span>
 
 ### 阴（三）阴（啊）
 - <span style="color: red;">过程小周期出现阳三角标记，慢慢走高，但最后下跌。</span>
@@ -61,7 +62,7 @@ seo:
 - <span style="color: red;">过程没有什么标记，横盘不建议开仓。</span>
 
 ### 阴（啊）阴（双）
-- <span style="color: blue;">过程小周期出现阳双也出现阳三等回调马上**介入**，大周期有出现阴啊直接大幅向着趋势走。可能来不及开仓</span>
+- <span style="color: blue;">过程小周期出现阳双也出现阳三等回调**马上介入**，大周期有出现阴啊直接大幅向着趋势走。可能来不及开仓</span>
 
 ## 阴阳
 
