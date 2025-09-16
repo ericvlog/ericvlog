@@ -60,6 +60,7 @@ seo:
 - <span style="color: red;">过程小周期出现阳三角标记，慢慢走高，但最后下跌。</span>
 - <span style="color: orange;">过程紧接出现小周期阴三，大周期阴双，可以买，但接着大小周期出现阳双，要注意。</span>
 - <span style="color: blue;">过程小周期一直顶在平衡线上其中有阴双阴三标记，大周期没有标记直到要动时有阴阿拉丁标记。*</span>
+- <span style="color: blue;">过程小周期出现阳啊，大周期出现阴双，直接开头寸。</span>
 
 ### 阴（双）阴（三）
 - <span style="color: red;">过程没有什么标记，横盘不建议开仓。</span>
