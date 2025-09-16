@@ -41,14 +41,14 @@ seo:
 ---
 结合自己的指标，分定阴阳和信号指标，信号指标有阿拉丁，三角信号，阴阳可以分裂成，阴阳，阴阴，阳阳，阳阴
 
-![yinyangtu](/images/yinyang.jpg)
+<img src="/images/yinyang.jpg" alt="yinyangtu" style="max-width:100%;height:auto;" />
 
 <!--more-->
 ## 阴阴
 
 ### 阴（啊）阴（啊）
 - <span style="color: blue;">如果之后有标记（阴双，阴三），可以在回调一些时开头寸。</span>
-- 过程没什么标记，一直横盘不开头寸。
+- <span style="color: red;">过程没什么标记，一直横盘不开头寸。</span>
 
 ### 阴（啊）阴（三）
 - <span style="color: red;">过程没什么标记，一直横盘不开头寸。</span>
